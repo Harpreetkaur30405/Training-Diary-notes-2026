@@ -130,14 +130,15 @@ Operators are symbols used to perform operations on values and variables.
 
 Used to perform mathematical calculations.
 
-|Operator|	Description	Example
-|+	             Addition	5 + 2 = 7
-|-	Subtraction	5 - 2 = 3
-|*	Multiplication	5 * 2 = 10
-|/	Division	5 / 2 = 2.5
-|%	Modulus (Remainder)	5 % 2 = 1
-|//	Floor Division	5 // 2 = 2
-|**	Exponentiation	5 ** 2 = 25
+|Operator|	 |     Description    |	|Example     |
+--------------------------------------------------
+|   +	   |   |Addition            |	|5 + 2 = 7   |
+|   -	   |   |Subtraction         |	|5 - 2 = 3   |
+|   *	   |   |Multiplication      |	|5 * 2 = 10  |
+|   /	   |   |Division	          | |5 / 2 = 2.5 |
+|   %	   |   |Modulus (Remainder) |	|5 % 2 = 1   |
+|  //	   |   |Floor Division	    | |5 // 2 = 2  |
+|  **	   |   |Exponentiation	    | |5 ** 2 = 25 |
 
 
 #### 2. Comparison Operators
