@@ -15,6 +15,109 @@ name = "Harpreet"
 age = 20
 
 Here, name and age are variables.
+### The type() Function
+
+The type() function is used to determine the data type of a variable.
+
+Example:
+
+x = 42
+
+print(type(x))
+
+Output:
+
+<class 'int'>
+
+This shows that x is an integer (int) data type.
+
+### The id() Function
+
+The id() function returns the unique memory address (identity) of an object.
+
+Example:
+
+x = 42
+print(id(x))
+
+Output:
+
+140721234567890
+
+(The actual number may vary on different systems.)
+
+This value represents the memory location where the object is stored.
+
+### Formatted Strings (f-Strings)
+
+Python provides f-strings (formatted strings) to insert variables directly into text.
+
+The letter f before a string tells Python to evaluate expressions written inside curly braces {}.
+
+Example:
+
+name = "Harpreet"
+
+print(f"My name is {name}")
+
+Output:
+
+My name is Harpreet
+
+### Difference Between f-String and Normal String
+
+#### Using f-string:
+
+print(f"Data Type of x: {type(x)}")
+
+Output:
+
+Data Type of x: <class 'int'>
+
+Python evaluates the expression inside {}.
+
+#### Using normal string:
+
+print("Data Type of x: {type(x)}")
+
+Output:
+
+Data Type of x: {type(x)}
+
+Since there is no f before the string, Python treats everything as plain text and does not evaluate the expression.
+
+#### Example :
+x = 42
+
+print(x)
+
+print("x")
+
+print(f"x is a variable: {x}")
+
+print(f"Value of x: {x}")
+
+print(f"Data Type of x: {type(x)}")
+
+print("Data type of x: {type(x)}")
+
+print(f"Memory address of x (id): {id(x)}")
+
+#### Output:
+42
+
+x
+
+x is a variable: 42
+
+Value of x: 42
+
+Data Type of x: <class 'int'>
+
+Data type of x: {type(x)}
+
+Memory address of x (id): 11646664
+
 ### Dynamic Typing
 
 Python is a dynamically typed language, which means we do not need to declare the data type of a variable explicitly. Python automatically determines the type based on the assigned value.
@@ -36,16 +139,36 @@ Data types define the type of value stored in a variable.
 Numeric data types are used to store numbers.
 
 Integer (int) – Whole numbers
+
 Float (float) – Decimal numbers
+
 Complex (complex) – Numbers with real and imaginary parts
 
-Examples:
+#### Examples:
 
-a = 10
+my_int = -10
 
-b = 3.14
+my_float = 3.14159
 
-c = 2 + 3j
+my_complex = 2 + 3j
+
+print(type(my_int))
+
+print(type(my_float))
+
+print(type(my_complex))
+
+print(my_complex.real, my_complex.imag)
+
+#### Output:
+
+<class 'int'>
+
+<class 'float'>
+
+<class 'complex'>
+
+2.0 3.0
 
 #### 2. String Type
 
@@ -61,6 +184,34 @@ message = """
 Welcome to AI/ML Training.
 This is a multiline string.
 """
+
+#### Example:
+
+single_line = "Hello AIML Freshers!"
+
+multi_line = """This is a multi-line string.
+
+It is very useful for documentation strings (docstrings) or block comment."""
+
+print(single_line)
+
+print(multi_line)
+
+print(type(single_line))
+
+print(type(multi_line))
+
+#### Output: 
+
+Hello AIML Freshers!
+
+This is a multi-line string.
+
+It is very useful for documentation strings (docstrings) or block comment.
+
+<class 'str'>
+
+<class 'str'>
 
 Strings are enclosed within single quotes (' '), double quotes (" "), or triple quotes (''' ''' or """ """).
 
@@ -131,7 +282,7 @@ Operators are symbols used to perform operations on values and variables.
 Used to perform mathematical calculations.
 
 |Operator |	      Description     |	Example     |
-|-------------------------------------------------|
+|---------|-----------------------|-------------|
 |   +	    |   Addition            |	5 + 2 = 7   |
 |   -	    |   Subtraction         |	5 - 2 = 3   |
 |   *	    |   Multiplication      |	5 * 2 = 10  |
@@ -145,19 +296,14 @@ Used to perform mathematical calculations.
 
 Used to compare two values and return True or False.
 
-Operator	Meaning
-
--	Equal to(==)
-  
--	Not equal to(!=)
-  
--	Greater than(>)
-  
--	Less than(<)
-  
--	Greater than or equal to(>=)
-  
--	Less than or equal to(<=)
+|Operator|	Meaning                  |
+|--------|---------------------------|
+|  ==	   | Equal to                  |
+|  !=	   | Not equal to              |
+|   >	   | Greater than              |
+|   <	   | Less than                 |
+|  >=	   | Greater than or equal to  |
+|  <=	   | Less than or equal to     | 
 
 Example:
 
@@ -171,13 +317,11 @@ True
 
 Used to combine conditional statements.
 
-Operator	Description
-
-- and	Returns True if both conditions are True
-  
-- or	Returns True if at least one condition is True
-  
-- not	Reverses the result
+|Operator|	Description                                   |
+|--------|------------------------------------------------|
+|   and	 |Returns True if both conditions are True        |
+|   or	 |Returns True if at least one condition is True  |
+|   not	 |Reverses the result                             |
 
 Example:
 
@@ -191,19 +335,14 @@ False
 
 Used to assign and update values in variables.
 
-Operator	Example
-
-- +=	x += 5
-
-- -=	x -= 5
-
-- *=	x *= 5
-
-- /=	x /= 5
-
-- //=	x //= 5
-
-- **=	x **= 5
+|Operator|	Example |
+|--------|----------|
+|  +=    |  x += 5  |
+|  -=	   |  x -= 5  |
+|  *=	   |  x *= 5  |
+|  /=	   |  x /= 5  |
+|  //=	 |  x //= 5 |
+|  **=	 |  x **= 5 |
 
 Example:
 
@@ -216,16 +355,3 @@ print(x)
 Output:
 
 15
-Learning Outcomes
-
-By the end of Day 1, I was able to:
-
-Install Python and understand the use of Google Colab.
-Understand variables and dynamic typing in Python.
-Learn different Python data types.
-Differentiate between mutable and immutable objects.
-Use arithmetic, comparison, logical, and assignment operators.
-Write basic Python statements and perform simple operations.
-Conclusion
-
-The first day of training provided a strong foundation in Python programming. I learned about variables, data types, mutable and immutable objects, and different categories of operators. These concepts are essential for further learning in Artificial Intelligence and Machine Learning.
