@@ -51,7 +51,7 @@ print("Data Type of x: {type(x)}")
 #### Output:  
 Data Type of x: {type(x)}  
 Since there is no f before the string, Python treats everything as plain text and does not evaluate the expression.  
-Example :  
+Example :  <img src="https://github.com/username/repo/blob/main/day1.jpg?raw=true" width="500">
 
 ### Dynamic Typing
 
