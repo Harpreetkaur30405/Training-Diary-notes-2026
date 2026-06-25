@@ -5,118 +5,53 @@
 
 On the first day of the AI/ML training program, we installed Python and learned about different platforms for writing and executing Python code. We were introduced to Google Colab, a cloud-based environment that allows users to write and run Python programs directly through a web browser without installing software locally.
 ### Variables in Python
-
-A variable is a name used to store data in memory. Variables allow us to save and manipulate information within a program.
-
-Example:
-
-name = "Harpreet"
-
-age = 20
-
+A variable is a name used to store data in memory.Variables allow us to save and manipulate information within a program.  
+#### Example:  
+name = "Harpreet"  
+age = 20  
 Here, name and age are variables.
-### The type() Function
 
-The type() function is used to determine the data type of a variable.
+### The type() Function  
+The type() function is used to determine the data type of a variable.  
+#### Example:  
+x = 42  
+print(type(x))  
+#### Output:  
+<class 'int'>  
+This shows that x is an integer (int) data type.  
 
-Example:
-
-x = 42
-
-print(type(x))
-
-Output:
-
-<class 'int'>
-
-This shows that x is an integer (int) data type.
-
-### The id() Function
-
-The id() function returns the unique memory address (identity) of an object.
-
-Example:
-
-x = 42
-print(id(x))
-
-Output:
-
-140721234567890
-
-(The actual number may vary on different systems.)
-
+### The id() Function  
+The id() function returns the unique memory address (identity) of an object.  
+#### Example:  
+x = 42  
+print(id(x))  
+#### Output:  
+140721234567890  
+(The actual number may vary on different systems.)  
 This value represents the memory location where the object is stored.
 
-### Formatted Strings (f-Strings)
-
-Python provides f-strings (formatted strings) to insert variables directly into text.
-
-The letter f before a string tells Python to evaluate expressions written inside curly braces {}.
-
-Example:
-
-name = "Harpreet"
-
-print(f"My name is {name}")
-
-Output:
-
+### Formatted Strings (f-Strings)  
+Python provides f-strings (formatted strings) to insert variables directly into text.  
+The letter f before a string tells Python to evaluate expressions written inside curly braces {}.  
+#### Example:  
+name = "Harpreet"  
+print(f"My name is {name}")  
+#### Output:  
 My name is Harpreet
 
-### Difference Between f-String and Normal String
-
-#### Using f-string:
-
-print(f"Data Type of x: {type(x)}")
-
-Output:
-
-Data Type of x: <class 'int'>
-
+### Difference Between f-String and Normal String  
+#### Using f-string:  
+print(f"Data Type of x: {type(x)}")  
+#### Output:  
+Data Type of x: <class 'int'>  
 Python evaluates the expression inside {}.
 
-#### Using normal string:
-
-print("Data Type of x: {type(x)}")
-
-Output:
-
-Data Type of x: {type(x)}
-
-Since there is no f before the string, Python treats everything as plain text and does not evaluate the expression.
-
-#### Example :
-x = 42
-
-print(x)
-
-print("x")
-
-print(f"x is a variable: {x}")
-
-print(f"Value of x: {x}")
-
-print(f"Data Type of x: {type(x)}")
-
-print("Data type of x: {type(x)}")
-
-print(f"Memory address of x (id): {id(x)}")
-
-#### Output:
-42
-
-x
-
-x is a variable: 42
-
-Value of x: 42
-
-Data Type of x: <class 'int'>
-
-Data type of x: {type(x)}
-
-Memory address of x (id): 11646664
+#### Using normal string:  
+print("Data Type of x: {type(x)}")  
+#### Output:  
+Data Type of x: {type(x)}  
+Since there is no f before the string, Python treats everything as plain text and does not evaluate the expression.  
+Example :  
 
 ### Dynamic Typing
 
