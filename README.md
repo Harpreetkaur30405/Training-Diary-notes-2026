@@ -258,6 +258,110 @@ Write a script that classifies a person's age into the following categories:
 - `age >= 60`: "Senior"
 <img width="313" height="313" alt="control flow branching" src="https://github.com/user-attachments/assets/1d19d634-0304-41f0-b2a3-7832b0c32f37" />
 
+## Day 3
+## 24 June 2026
+## Python Foundations — Functions and Modular Programming  
+**Functions**—the building blocks of reusable and modular code. In AI/ML, functions are used everywhere: from defining custom data preprocessing pipelines, wrapping evaluation metrics, designing neural network layers, to structuring experiment run loggers.  
+## Learning Objectives  
+1. **Built-in Functions**: Explore and apply standard Python helper functions (`len`, `sum`, `max`, `min`, `abs`, `round`).
+2. **Custom Functions**: How to define and call your own functions using the `def` keyword.
+3. **Parameters vs. Arguments**: Passing information into functions.
+4. **The `return` Statement**: Getting results back from functions to use in other calculations.
+5. **Types of Arguments**: Positional, keyword, default parameters, and variable-length arguments (`*args`, `**kwargs`).
+6. **Variable Scope**: Understanding local vs. global variables and the `global` keyword.
+7. **Recursive Functions**: Functions that call themselves (e.g., Factorial, Fibonacci).
+## 1. Built-in (Inbuilt) Functions in Python
+
+Python has several functions that are already created and ready to use. These are called **built-in functions**. In AI/ML, we use them constantly to get basic statistics of our dataset, inspect list lengths, or round float metrics.
+
+Commonly used built-in functions:
+- `len(sequence)`: Returns the number of items in a list, tuple, set, string, etc.
+- `sum(iterable)`: Adds up all elements of a numerical collection.
+- `max(iterable)` / `min(iterable)`: Returns the largest or smallest element.
+- `abs(number)`: Returns the absolute (positive) value of a number (important for calculating absolute errors).
+- `round(number, digits)`: Rounds a floating-point number to a specified number of decimal places.
+- `print(...)`: Outputs text or values to the screen.
+<img width="271" height="630" alt="bulit in functions" src="https://github.com/user-attachments/assets/fa9eb1c4-d074-4791-b4c7-8865cd54139c" />
+
+## 2. Creating Custom Functions
+
+While built-in functions are great, most of the time we need to write custom logic. In Python, we define a function using the **`def`** keyword, followed by the function name, parentheses `()`, and a colon `:`. The code inside the function must be indented.
+
+### 2.1 Defining and Calling a Simple Function
+A function does not run when you define it; it only runs when you explicitly **call** (execute) it by writing its name followed by parentheses.  
+<img width="613" height="276" alt="custom function" src="https://github.com/user-attachments/assets/7b16bc01-9278-40b0-9ab9-c50856570bdd" />  
+
+### 2.2 Parameters and Arguments
+Functions are much more useful when we can pass data into them. We do this by defining **parameters** (variable placeholders) inside the parentheses. When calling the function, we pass the actual values (**arguments**) into it.
+- **Parameter**: The variable listed in the function definition (e.g., `username`).
+- **Argument**: The actual value sent to the function when it is called (e.g., `"Amit"
+<img width="924" height="298" alt="function 1" src="https://github.com/user-attachments/assets/6313c482-2a61-4469-b190-11b427fa70dd" />
+
+## 3. The `return` Statement
+
+In the previous exercise, your function printed the sum on the screen. However, printing is only for humans to see. In a program, we usually need the function to **return** the calculated value back so we can save it in a variable and use it in other calculations.
+
+We use the **`return`** keyword to send a value back to the caller.
+
+> [gradient-alert]
+> A function exits immediately when it hits a `return` statement. Any lines of code written after `return` inside the same function scope are **unreachable** and will not execute.
+> <img width="805" height="471" alt="return statement" src="https://github.com/user-attachments/assets/cf733a64-abaa-4822-9c49-d5a6ef3ade07" />
+
+## 4. Types of Arguments
+
+Python is highly flexible in how parameters are passed to functions. Let's look at the primary ways:
+
+### 4.1 Positional vs. Keyword Arguments
+- **Positional Arguments**: Assigned based on the order they are passed.
+- **Keyword Arguments**: Passed with name-value pairs (e.g., `parameter=value`), allowing you to pass them in any order.
+
+### 4.2 Default Arguments
+You can assign a default value to a parameter in the function definition. If the caller does not pass an argument for that parameter, the default is used.  
+<img width="859" height="456" alt="various using arguments" src="https://github.com/user-attachments/assets/1a9e895e-2a80-4b88-a15a-33c71a5225d6" />  
+
+### 4.3 Variable-Length Arguments (`*args` and `**kwargs`)
+Sometimes, you don't know how many arguments will be passed to your function. Python provides two special symbols:
+- **`*args`**: Collects extra positional arguments into a **Tuple**.
+- **`**kwargs`**: Collects extra keyword arguments into a **Dictionary**.
+<img width="822" height="247" alt="args" src="https://github.com/user-attachments/assets/c430cb96-3f79-448c-92a8-b212394972d4" />
+
+<img width="1219" height="308" alt="kwargs" src="https://github.com/user-attachments/assets/c7ece91e-1591-4b08-9340-fa731c7ea9a6" />  
+
+## 5. Variable Scope: Local vs. Global
+
+Variables are not accessible everywhere in a Python script. Where a variable is defined determines its **scope**:
+- **Global Scope**: Variables defined outside any function. They can be read anywhere in the file.
+- **Local Scope**: Variables defined inside a function. They can only be accessed *inside* that function. Once the function finishes running, local variables are destroyed.
+<img width="546" height="400" alt="global and local" src="https://github.com/user-attachments/assets/6e74232f-0a7f-47b0-b92e-3e84fe744798" />
+
+### The `global` Keyword
+If you try to change a global variable inside a function, Python will normally create a new local variable with the same name. To modify the actual global variable, you must declare it using the **`global`** keyword.  
+<img width="590" height="334" alt="global keyword" src="https://github.com/user-attachments/assets/8d0550d4-f094-41d6-b095-5783a9309954" />  
+
+## 6. Recursive Functions
+
+A **recursive function** is a function that calls itself to solve a problem. It works by breaking a complex problem down into smaller, simpler steps of the same problem.
+
+Every recursive function must have two crucial parts:
+1. **Base Case**: A simple condition that stops the recursion (prevents infinite loops!).
+2. **Recursive Case**: The section where the function calls itself with a slightly simpler input.
+
+### 6.1 Simple Example: Factorial
+The factorial of a number $n$ (written as $n!$) is the product of all positive integers less than or equal to $n$.
+For example: $5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$.
+Formula: $n! = n \times (n-1)!$ with base case $0! = 1$ and $1! = 1$.  
+<img width="702" height="297" alt="Recursive function" src="https://github.com/user-attachments/assets/3b68c097-62ab-4889-bff7-137348f59d1f" />
+
+
+
+
+
+
+
+
+
+
+
 
 
 
