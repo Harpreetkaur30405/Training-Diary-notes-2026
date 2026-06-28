@@ -104,29 +104,10 @@ Type casting is the process of converting a variable from one data type to anoth
 - **Explicit Type Conversion**: Done manually using Python constructor functions like `int()`, `float()`, `str()`, `list()`, `tuple()`, `set()`, etc.
 <img width="819" height="658" alt="implicit and explicit" src="https://github.com/user-attachments/assets/57f729a3-3de7-4ace-a9fd-cc0e875df150" />
 
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-### Operators in Python
-
+## Operators in Python  
 Operators are symbols used to perform operations on values and variables.
 
-#### 1. Arithmetic Operators
-
+## 1. Arithmetic Operators  
 Used to perform mathematical calculations.
 
 |Operator |	      Description     |	Example     |
@@ -139,9 +120,9 @@ Used to perform mathematical calculations.
 |  //	    |   Floor Division	    | 5 // 2 = 2  |
 |  **	    |   Exponentiation	    | 5 ** 2 = 25 |
 
+<img width="377" height="334" alt="Arithmetic operators" src="https://github.com/user-attachments/assets/d643e16b-d97a-4dd3-a87e-8d10e17ba89d" />  
 
-#### 2. Comparison Operators
-
+## 2. Comparison Operators  
 Used to compare two values and return True or False.
 
 |Operator|	Meaning                  |
@@ -153,16 +134,9 @@ Used to compare two values and return True or False.
 |  >=	   | Greater than or equal to  |
 |  <=	   | Less than or equal to     | 
 
-Example:
+<img width="306" height="253" alt="comparison" src="https://github.com/user-attachments/assets/e0f93ba1-f875-4b3e-8600-5073f259bfec" />
 
-10 > 5
-
-Output:
-
-True
-
-#### 3. Logical Operators
-
+## 3. Logical Operators  
 Used to combine conditional statements.
 
 |Operator|	Description                                   |
@@ -171,16 +145,9 @@ Used to combine conditional statements.
 |   or	 |Returns True if at least one condition is True  |
 |   not	 |Reverses the result                             |
 
-Example:
+<img width="414" height="297" alt="logical" src="https://github.com/user-attachments/assets/02dd9b70-2433-4f59-853d-c39d1ce0ede2" />  
 
-True and False
-
-Output:
-
-False
-
-#### 4. Assignment Operators
-
+## 4. Assignment Operators  
 Used to assign and update values in variables.
 
 |Operator|	Example |
@@ -192,14 +159,128 @@ Used to assign and update values in variables.
 |  //=	 |  x //= 5 |
 |  **=	 |  x **= 5 |
 
-Example:
+<img width="573" height="297" alt="Assignment operators" src="https://github.com/user-attachments/assets/0fa6fee4-e8e8-4dae-91dc-b8a367efb343" />  
 
-x = 10
+## Day 2  
+## 23 June 2026  
+## 5. Bitwise Operators  
+Bitwise operators are used to compare (binary) numbers:  
 
-x += 5
+|Operator|	Name |	Description|	Example|
+|--------|-------|-------------|---------|
+|   &    | 	AND	 |Sets each bit to 1 if both bits are 1|x & y|
+|   \|   |  OR   |Sets each bit to 1 if one of two bits is 1| x \| y |
+|   ^	   |  XOR  |Sets each bit to 1 if only one of two bits is 1|x ^ y|	
+|   ~    |	NOT  |Inverts all the bits|	~x|	
+|   <<	 |Zero fill left shift|Shift left by pushing zeros in from the right and let the leftmost bits fall off|x << 2|
+|   >>	 |Signed right shift|	Shift right by pushing copies of the leftmost bit in from the left, and let the rightmost bits fall off|x >> 2|
 
-print(x)
+<img width="411" height="527" alt="bitwise" src="https://github.com/user-attachments/assets/0c51fbe0-995c-4ec6-af08-b8f3a0e09f64" />  
 
-Output:
+## 6. Membership operator  
+Membership operators are used to test if a sequence is presented in an object:  
 
-15
+|Operator|Description|Example|
+|--------|-----------|--------|
+|   in 	 |Returns True if a sequence with the specified value is present in the object|x in y|	
+| not in |Returns True if a sequence with the specified value is not present in the object|x not in y|
+
+<img width="422" height="230" alt="Membership" src="https://github.com/user-attachments/assets/34ae9cc2-7103-4c5b-8cea-64428a9f9375" />  
+
+## 7. Identity operator  
+Identity operators are used to compare the objects, not if they are equal, but if they are actually the same object, with the same memory location:  
+
+|Operator|Description|Example|
+|--------|-----------|-------|
+|   is 	 |Returns True if both variables are the same object|x is y|	
+| is not |Returns True if both variables are not the same object|x is not y|
+
+<img width="290" height="440" alt="Identity" src="https://github.com/user-attachments/assets/5b767a96-fb20-4ef6-bfc6-59058a119e2c" />  
+
+## Python Loops: `for` and `while`  
+Loops allow us to repeat a block of code multiple times. In Python, there are two native loops: `for` and `while`.  
+
+### 1 The `for` Loop and `range()`  
+The `for` loop is iterator-based. It traverses a sequence (list, tuple, string, set, dictionary) or an iterator.  
+We use `range(start, stop, step)` to generate a sequence of numbers:  
+- `start` (optional): Defaults to 0.  
+- `stop` (required): Generates numbers up to, but not including, this value.  
+- `step` (optional): Step value for incrementing (or decrementing).  
+<img width="402" height="434" alt="for loop 1" src="https://github.com/user-attachments/assets/2a18b1c1-27bf-4a68-87da-c84bff9d531e" />  
+ 
+<img width="513" height="676" alt="iterating over a list" src="https://github.com/user-attachments/assets/8fd5ac95-68f8-4321-b6e0-d5d1e436a60b" />  
+<img width="502" height="315" alt="password example" src="https://github.com/user-attachments/assets/6cbb1b47-51ee-4dc1-a34d-835ffe5a37f8" />  
+
+<img width="257" height="340" alt="for loop" src="https://github.com/user-attachments/assets/80bcea96-152e-4c49-98ac-3e58ac5facbc" />  
+
+### 2 The `while` Loop  
+A `while` loop continues executing a block of code as long as a specified condition is `True`.   
+
+**Warning**: You must ensure that the condition is updated inside the loop to eventually evaluate to `False`, otherwise you will create an **infinite loop**.  
+<img width="563" height="227" alt="while loop 1" src="https://github.com/user-attachments/assets/f642fbd5-01e9-4cd0-ab12-613f8e451806" />  
+
+### 3 How to Use Loops (Practical Iteration & Controls)  
+#### A. Loop Control Statements:  
+Python provides control statements to modify the execution flow of loops:  
+##### 1. The `break` Statement  
+The `break` statement terminates the loop immediately when triggered, jumping to the code execution directly after the loop.  
+<img width="295" height="178" alt="image" src="https://github.com/user-attachments/assets/033ee08a-6e4e-4db0-b3a5-ce36100370a7" />  
+
+##### 2. The `continue` Statement  
+The `continue` statement skips the rest of the current loop iteration and moves directly to the next iteration.  
+<img width="408" height="405" alt="continue" src="https://github.com/user-attachments/assets/794ee728-15eb-4f4d-a298-afaaf8380abf" />  
+
+##### 3. The `pass` Statement  
+The `pass` statement is a null operation. It does nothing and acts as a placeholder when the syntax requires a statement, but no action is needed yet.  
+<img width="754" height="300" alt="pass statement" src="https://github.com/user-attachments/assets/14d85db8-f6f5-480d-b640-8bc6cfaaa45c" />  
+
+#### B. The Unique Loop `else` Clause:
+In Python, loops can have an optional `else` block. The `else` block executes **only if the loop terminates normally** (i.e., completes all iterations without hitting a `break` statement). If a `break` is triggered, the `else` block is skipped.  
+<img width="870" height="410" alt="Loop else" src="https://github.com/user-attachments/assets/c9742dd6-84ce-4585-ac0e-f26e09b5ac06" />  
+
+## Control Flow Statements in Python  
+Control flow allows programs to make decisions and execute different blocks of code dynamically.  
+
+### Syntax of Conditional Branching (`if`, `elif`, `else`)  
+```python
+if condition1:
+    # executes if condition1 is True
+elif condition2:
+    # executes if condition1 is False and condition2 is True
+else:
+    # executes if all previous conditions are False
+```
+### Exercise : Control Flow Branching
+Write a script that classifies a person's age into the following categories:
+- `age < 13`: "Child"
+- `age` between 13 and 19 (inclusive): "Teenager"
+- `age` between 20 and 59 (inclusive): "Adult"
+- `age >= 60`: "Senior"
+<img width="313" height="313" alt="control flow branching" src="https://github.com/user-attachments/assets/1d19d634-0304-41f0-b2a3-7832b0c32f37" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
