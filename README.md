@@ -307,6 +307,8 @@ We use the **`return`** keyword to send a value back to the caller.
 > A function exits immediately when it hits a `return` statement. Any lines of code written after `return` inside the same function scope are **unreachable** and will not execute.
 > <img width="805" height="471" alt="return statement" src="https://github.com/user-attachments/assets/cf733a64-abaa-4822-9c49-d5a6ef3ade07" />
 
+## Day 4
+## 25 June 2026
 ## 4. Types of Arguments
 
 Python is highly flexible in how parameters are passed to functions. Let's look at the primary ways:
@@ -350,7 +352,120 @@ Every recursive function must have two crucial parts:
 The factorial of a number $n$ (written as $n!$) is the product of all positive integers less than or equal to $n$.
 For example: $5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$.
 Formula: $n! = n \times (n-1)!$ with base case $0! = 1$ and $1! = 1$.  
-<img width="702" height="297" alt="Recursive function" src="https://github.com/user-attachments/assets/3b68c097-62ab-4889-bff7-137348f59d1f" />
+<img width="702" height="297" alt="Recursive function" src="https://github.com/user-attachments/assets/3b68c097-62ab-4889-bff7-137348f59d1f" />  
+
+# Python Foundations — Python Data Structures (Lists, Tuples, Dictionaries, and Sets)  
+**Data Structures**—the backbone of data storage, manipulation, and processing in Python. In AI/ML, these collections are absolutely crucial: from organizing features and training labels, to configuring hyperparameters, creating vocabularies, and filtering unique class labels.
+
+---
+
+## Learning Objectives
+1. **Lists**: Mutable ordered sequences, common methods, indexing/slicing, and how they represent features and labels.
+2. **Tuples**: Immutable ordered sequences, memory/speed efficiency, packing/unpacking, and representing fixed dimensions (like image shapes).
+3. **Dictionaries**: Key-value mappings (hash maps), keys hashability rule, safe lookups (`.get()`), and storing model configurations/evaluation metrics.
+4. **Sets**: Unordered unique collections, set operations (union, intersection, difference), and handling class labels/vocabulary overlap in datasets.
+5. **Data Structures in Action**: Side-by-side coding questions for immediate practice.
+6. **Comprehensive Practice**: Complex questions at the end to integrate everything you've learned.
+
+## 1. Lists: Mutable Sequences
+
+A **List** in Python is an ordered, mutable sequence of items. It allows duplicates and can contain elements of different data types (though in AI/ML, we usually keep them homogeneous for tabular data).
+
+### 1.1 Memory Representation & Mutability
+- Lists store **references (pointers)** to objects in memory rather than the actual values directly in a contiguous block.
+- Because lists are **mutable**, you can change, add, or remove elements in-place without changing the identity (`id()`) of the list itself.
+
+### 1.2 Useful List Operations for AI/ML
+- **Appending & Extending**: `.append(x)` adds a single item, `.extend(iterable)` adds multiple items (e.g., merging batches).
+- **Inserting & Removing**: `.insert(index, x)`, `.remove(value)` (removes first occurrence), and `.pop(index)` (removes and returns item).
+- **Slicing**: Extremely important for batching and sequence slicing: `list[start:end:step]`.
+- **Sorting**: `.sort()` sorts in-place, whereas `sorted(list)` returns a new sorted list.
+
+<img width="858" height="864" alt="List types" src="https://github.com/user-attachments/assets/d9f8d926-bfca-40d8-a3af-6d132ec131ca" />
+
+## Day 5  
+## 26 June 2026
+## 2. Tuples: Locked-down Sequences
+
+A **Tuple** is an ordered, **immutable** sequence of items. Once a tuple is created, its values cannot be altered, added, or deleted.
+
+### 2.1 Why Use Tuples in AI/ML?
+- **Data Safety**: Prevents accidental modification of constant parameters (e.g., `image_shape = (224, 224, 3)`).
+- **Performance**: Tuples are faster to construct and use less memory than lists because they are allocated in a single, fixed-size memory block.
+- **Dictionary Keys**: Because tuples are immutable, they are hashable and can be used as dictionary keys (lists cannot).
+
+### 2.2 Unpacking and Wildcards
+- We can extract elements of a tuple into individual variables directly (unpacking).
+- We can use the wildcard operator `*` to capture multiple elements into a list during unpacking.
+
+<img width="432" height="363" alt="Tuples" src="https://github.com/user-attachments/assets/30b4f062-bad5-40c4-98c4-faecdfd88e4e" />  
+
+## Wildcard Unpacking  
+Wildcard unpacking in Python tuples means using the * operator while unpacking a tuple to collect multiple values into a list.  
+### Syntax  
+a, *b, c = tuple_name  
+a → gets the first element.  
+*b → gets all the middle elements as a list.  
+c → gets the last element.  
+
+<img width="501" height="303" alt="Wildcard unpacking" src="https://github.com/user-attachments/assets/b224ae79-1fac-4ce7-97b1-bc0b3a54e7e9" />  
+
+### Exercise: Dataset Split Unpacker (Tuples)
+
+When training ML models, we split our dataset into train, validation, and test splits.
+
+1. Write a function `unpack_splits(split_tuple)` that takes a nested tuple formatted as: `( (X_train, y_train), (X_val, y_val), (X_test, y_test) )`.
+2. The function should unpack these splits and print:
+   - The size/length of `X_train`
+   - The size/length of `X_val`
+   - The size/length of `X_test`
+3. Test your function with the provided `dataset_splits` variable.
+
+<img width="695" height="537" alt="Dataset S lit Unpacker" src="https://github.com/user-attachments/assets/32ccc700-7496-41dd-9744-2d96b5df0fb2" />  
+
+<img width="308" height="261" alt="tuple example" src="https://github.com/user-attachments/assets/89f0e1c9-e7d9-41f8-b43e-e2a720ca8498" />  
+
+## 3. Dictionaries: Fast Key-Value Maps
+
+A **Dictionary** in Python is an unordered (insertion-ordered since 3.7) collection of key-value pairs. Dictionaries use an underlying **Hash Table**, allowing key lookups in constant time ($O(1)$ on average), which is incredibly fast!
+
+### 3.1 Rules of Hashability
+- **Keys** MUST be **immutable** (hashable) objects (e.g., strings, numbers, tuples). You cannot use lists or dictionaries as keys.
+- **Values** can be anything, including lists, other dictionaries, or custom objects.
+
+### 3.2 Key Methods
+- **Accessing Safely**: Using `dict[key]` raises a `KeyError` if the key doesn't exist. Using `dict.get(key, default)` returns the default value (or `None`) safely without crashing.
+- **Iteration**: Use `.keys()`, `.values()`, or `.items()` (which returns a view of key-value tuples).
+- **Updating**: `dict[key] = value` updates or inserts the key-value pair.  
+
+<img width="828" height="671" alt="Dictionary" src="https://github.com/user-attachments/assets/e3c5db5b-8ea0-4238-9dc1-569d6d422545" />  
+
+## Counting Occurrences of List Elements Using Dictionary:  
+This program uses a dictionary to count how many times each element appears in a list. The count() method finds the number of occurrences of each element, and the dictionary stores the element as the key and its frequency as the value.  
+
+<img width="440" height="379" alt="counting frequency using dictionary" src="https://github.com/user-attachments/assets/2ed7110d-26b9-4c3c-a6d1-8ac5e81bd814" />  
+
+## 4. Sets: Unique Collections
+
+A **Set** is an unordered collection of unique elements. Like dictionaries, sets use hash tables under the hood, making membership tests (`element in set`) extremely fast ($O(1)$).
+
+### 4.1 Set Operations
+Sets are ideal for mathematical operations:
+- **Union** (`|` or `.union()`): Combined unique elements from both sets.
+- **Intersection** (`&` or `.intersection()`): Elements present in both sets.
+- **Difference** (`-` or `.difference()`): Elements in the first set but not the second.
+- **Symmetric Difference** (`^` or `.symmetric_difference()`): Elements in either set, but not both.
+
+<img width="326" height="244" alt="Sets example" src="https://github.com/user-attachments/assets/e62ebf44-958e-4401-a43b-3211a15dcadf" />  
+
+## Example of Union, Intersection, Difference:  
+<img width="758" height="548" alt="Example of Union, Intersection, Difference" src="https://github.com/user-attachments/assets/f025bfa1-1c65-4141-bc4b-b611a19f9bf0" />
+
+
+
+
+
+
 
 
 
