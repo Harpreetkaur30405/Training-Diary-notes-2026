@@ -459,7 +459,37 @@ Sets are ideal for mathematical operations:
 <img width="326" height="244" alt="Sets example" src="https://github.com/user-attachments/assets/e62ebf44-958e-4401-a43b-3211a15dcadf" />  
 
 ## Example of Union, Intersection, Difference:  
-<img width="758" height="548" alt="Example of Union, Intersection, Difference" src="https://github.com/user-attachments/assets/f025bfa1-1c65-4141-bc4b-b611a19f9bf0" />
+<img width="758" height="548" alt="Example of Union, Intersection, Difference" src="https://github.com/user-attachments/assets/f025bfa1-1c65-4141-bc4b-b611a19f9bf0" />  
+
+## Day 6  
+## 29 June 2026
+## NumPy Essentials for AI & Machine Learning  
+we transition from pure Python to **NumPy** (Numerical Python), the most important library for handling numbers, matrices, and datasets in AI.  
+In AI and Machine Learning, your data is always represented as grids of numbers (like rows of data, pixel values in images, or word frequencies in texts). While Python lists can store these numbers, they are very slow. NumPy introduces a special array structure that runs up to 100x faster than standard Python lists.  
+
+## Learning Objectives  
+1. **NumPy Arrays vs. Python Lists**: Why NumPy is faster (Memory Layout).
+2. **Creating Arrays & Attributes**: Creating 1D and 2D arrays, and checking `.shape` and `.dtype`.
+3. **Vectorization**: Performing math operations on full datasets without writing slow `for` loops.
+4. **Slicing & Indexing**: Extracting features ($X$) and labels ($y$) from a dataset.
+5. **Data Cleaning & Filtering**: Using Boolean masks and `np.where()` to handle outliers or invalid data.
+6. **Statistical Summaries & Broadcasting**: Calculating mean/standard deviation and standardizing data.
+7. **Reshaping & Flattening**: Changing array structures for model inputs.
+
+## 1. Introduction: Why NumPy Arrays?
+
+- **Python Lists**: Store pointers to values scattered across your computer's memory. This makes them flexible but slow for doing heavy calculations.
+- **NumPy Arrays**: Store numbers directly side-by-side in a **contiguous block of memory** of a single data type. This allows your CPU to perform operations on the numbers instantly.
+
+Let's import `numpy` (usually as `np`) and create our first arrays:  
+<img width="497" height="181" alt="numpy" src="https://github.com/user-attachments/assets/edf7fff5-4659-463e-9963-b458c87f8f6d" />  
+
+<img width="618" height="365" alt="numpy 1d array" src="https://github.com/user-attachments/assets/12f71473-6be4-4d6e-957d-21579ae28bf4" />  
+
+<img width="543" height="370" alt="numpy 2d array" src="https://github.com/user-attachments/assets/a132ec6e-f08a-4ffa-a24b-10628d049947" />
+
+
+
 
 
 
