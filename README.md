@@ -488,6 +488,166 @@ Let's import `numpy` (usually as `np`) and create our first arrays:
 
 <img width="543" height="370" alt="numpy 2d array" src="https://github.com/user-attachments/assets/a132ec6e-f08a-4ffa-a24b-10628d049947" />
 
+## 2. Vectorization: Math Without Loops
+
+If you want to perform math on every item in a Python list, you must write a `for` loop. In NumPy, you can do math operations directly on the array. NumPy applies the operation to every element automatically. This is called **vectorization**.  
+
+<img width="632" height="484" alt="vectorized" src="https://github.com/user-attachments/assets/23050619-51c8-48c7-8ddd-024c4f09ca82" />  
+
+### Speed Comparison: Python Loop vs. NumPy Vectorization
+Let's see the speed difference by adding one million numbers together:  
+
+<img width="633" height="655" alt="speed comparison" src="https://github.com/user-attachments/assets/851f93fe-de01-4bd8-b595-2f1c19a328a6" />  
+
+## 3. Indexing & Slicing
+
+In Machine Learning, datasets are 2D grids (matrices):
+- **Rows** represent individual data samples (e.g., houses, patients, customers).
+- **Columns** represent characteristics or features (e.g., area, number of rooms, price).
+
+We slice arrays using: `array[row_indices, column_indices]`. The colon `:` means "select all" along that direction.  
+
+<img width="321" height="483" alt="indexing" src="https://github.com/user-attachments/assets/68e1ba1c-0c1b-42ca-8a42-f3015d12f6cf" />  
+
+<img width="257" height="327" alt="slicing" src="https://github.com/user-attachments/assets/e675bfb9-0c35-4cc0-aa89-c13bd47623ab" />  
+
+## 4. Data Filtering & Cleaning (Boolean Masking & `np.where`)
+
+Datasets often contain mistakes, missing values, or outliers (e.g., negative salaries or zero values where it's impossible). NumPy allows us to filter these out easily.  
+
+<img width="742" height="474" alt="np where" src="https://github.com/user-attachments/assets/90277e78-4831-4355-ad8f-75e2f109f27b" />  
+
+## 5. Statistical Summaries & Standardization (Broadcasting)
+
+NumPy offers functions to calculate dataset metrics. 
+- `axis=0`: Perform calculation column-wise (vertical down).
+- `axis=1`: Perform calculation row-wise (horizontal across).
+
+<img width="736" height="626" alt="mean and median" src="https://github.com/user-attachments/assets/c88bec69-ed6d-4e68-9238-b52e7932d2d6" />  
+
+## 6. Reshaping & Flattening
+
+AI models sometimes require inputs of specific shapes (e.g. flattening image pixels from a 2D matrix into a 1D vector).  
+
+<img width="615" height="534" alt="Reshaping and flatten" src="https://github.com/user-attachments/assets/5ecd954c-3bf1-458d-ab02-03c72e0c4270" />  
+
+## 7. Bonus: Matrix Multiplication (The Dot Product)
+
+In neural networks, we multiply inputs by weight grids to make predictions. In NumPy, matrix multiplication is done using the `@` operator or the `np.dot()` function.  
+
+<img width="457" height="561" alt="Dot product" src="https://github.com/user-attachments/assets/842645f5-947d-4875-96fb-8db91e7cf91b" />  
+
+## Normalization
+Standardize input values for training a model using mean and standard deviation.
+1. Calculate the column-wise mean of features matrix `X` below.
+2. Calculate the column-wise standard deviation of `X` using `np.std()`.
+3. Standardize `X` in a single line using broadcasting.
+   - Formula: $X_{normalized} = \frac{X - mean}{std}$
+
+<img width="333" height="584" alt="normalization" src="https://github.com/user-attachments/assets/29e85986-4121-4ad9-bc42-6bc81e4ab0eb" />  
+
+# NumPy Fundamentals
+
+Welcome to **Day 9 of your Data Science Journey**! Today, we start learning about **NumPy (Numerical Python)**, which is the foundational library for scientific computing and data analysis in Python.
+
+## What is NumPy?
+NumPy is an open-source Python library that provides support for large, multi-dimensional arrays and matrices, along with a collection of high-level mathematical functions to operate on these arrays.
+
+### Why do we need NumPy in Data Science?
+You might wonder: *Why not just use standard Python lists?*
+Standard Python lists are highly flexible because they can hold elements of different data types. However, this flexibility makes them slow and memory-intensive for large datasets. NumPy arrays resolve this limitation. Here is a comparison:
+
+| Feature | Python Lists | NumPy Arrays (`ndarray`) |
+| :--- | :--- | :--- |
+| **Data Type** | Heterogeneous (can store integers, strings, floats together) | Homogeneous (all elements must be of the same type) |
+| **Memory Layout** | Non-contiguous (elements are pointers scattered in memory) | Contiguous (stored next to each other in memory) |
+| **Speed** | Slow (requires type checking and pointer dereferencing) | Extremely fast (processed close to CPU/hardware speed) |
+| **Operations** | Elements must be modified in loops | Supports vectorized operations (no loops needed) | 
+
+### 🧠 Memory Structure Visualization:
+```text
+Python List (Pointers to Objects):
+[ List Object ] ──► [Pointer 0] ──► [ Integer Object: 1 ]
+                    [Pointer 1] ──► [ Integer Object: 2 ]
+                    [Pointer 2] ──► [ Integer Object: 3 ]
+
+NumPy Array (Contiguous Blocks of Raw Bytes):
+[ Array Metadata ] ──► [ 1 ][ 2 ][ 3 ] (Raw binary memory values in contiguous blocks)
+```
+
+## Module 1: Creating NumPy Arrays & Inspecting Attributes
+
+The core data structure of NumPy is the **`ndarray`** (N-dimensional array). Let's explore the various ways to create arrays and check their characteristics.
+
+### 1.1 Creating Arrays from Lists
+You can convert standard Python lists or tuples into arrays using `np.array()`.  
+
+<img width="288" height="304" alt="creating array from lists" src="https://github.com/user-attachments/assets/b08411ea-3fc6-4189-bf89-a2033941d8e1" />  
+
+### 1.2 Defining Array Data Types (`dtype`)
+NumPy allows you to explicitly specify the data type of the elements during array creation using the `dtype` parameter. Common types include: `np.int32`, `np.int64`, `np.float32`, `np.float64`, and `np.bool_`.  
+
+<img width="622" height="210" alt="data type" src="https://github.com/user-attachments/assets/bebd9924-1c84-428f-91be-cb21967cbbec" />  
+
+### 1.3 Built-in Functions for Array Creation
+Creating empty, filled, or structured arrays is highly useful for numerical computation. NumPy provides standard helpers:
+* `np.zeros(shape)`: Creates an array filled with 0s.
+* `np.ones(shape)`: Creates an array filled with 1s.
+* `np.arange(start, stop, step)`: Creates an array with values from start to stop (exclusive).
+* `np.linspace(start, stop, num)`: Creates an array with `num` evenly-spaced values over a specified interval (inclusive).
+* `np.eye(n)`: Creates an identity matrix of size $n \times n$.
+
+<img width="469" height="190" alt="np zeros" src="https://github.com/user-attachments/assets/afd2f6ea-52df-4ebf-aa92-0709d7594bf0" />  
+
+<img width="264" height="144" alt="np ones" src="https://github.com/user-attachments/assets/50a17753-333b-46eb-9dc6-130088a2fe8b" />  
+
+<img width="877" height="320" alt="np arange" src="https://github.com/user-attachments/assets/d2d78b4e-5ccd-4d88-8e95-ab38a9bde279" />  
+
+<img width="790" height="166" alt="np linspace" src="https://github.com/user-attachments/assets/6b1fcd6e-f0e6-41ef-ac69-c4893c5e15fb" />  
+
+<img width="1002" height="233" alt="np eye" src="https://github.com/user-attachments/assets/d8f005b9-ddf1-4ba3-b915-1b2282b78cf5" />  
+
+### 1.4 Array Attributes
+Every NumPy array has specific attributes that provide structural details:
+* `.ndim`: Number of dimensions (axes).
+* `.shape`: Dimensions of the array (represented as a tuple: (rows, columns)).
+* `.size`: Total number of elements in the array.
+* `.dtype`: Data type of elements.
+* `.itemsize`: Size of one array element in bytes.
+
+<img width="667" height="469" alt="Array Attributes" src="https://github.com/user-attachments/assets/68d29887-8d4c-410d-8b59-078222c0d959" />  
+
+## Module 2: Indexing in NumPy
+
+Indexing allows you to select single values or complete subsets from an array.
+
+### 2.1 1D Array Indexing
+Works exactly like Python list indexing (using `0` for the first element, `-1` for the last element).  
+<img width="504" height="413" alt="1d array indexing" src="https://github.com/user-attachments/assets/da691b2f-cfcd-480b-a9cd-32d5fc297fda" />  
+
+### 2.2 2D Array Indexing (Matrices)
+In standard Python, a 2D list of lists is indexed using `list_name[row][col]`. 
+In NumPy, you can do this more efficiently using a single set of square brackets: **`array[row, col]`**.
+
+<img width="319" height="363" alt="2d array indexing" src="https://github.com/user-attachments/assets/676095c5-149b-43ed-b37d-90748352336f" />  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
