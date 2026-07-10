@@ -631,6 +631,58 @@ In NumPy, you can do this more efficiently using a single set of square brackets
 
 <img width="319" height="363" alt="2d array indexing" src="https://github.com/user-attachments/assets/676095c5-149b-43ed-b37d-90748352336f" />  
 
+### 2.3 Boolean Indexing (Filtering / Masking) 🌟
+Boolean masking is one of the most powerful indexing techniques in NumPy. It allows you to select elements that meet specific logical conditions.
+
+1. **Create a condition (mask):** Evaluating an operation like `arr > 5` returns a boolean array of the same shape.
+2. **Apply the mask:** Passing the boolean array inside square brackets `arr[mask]` returns only elements where the condition is `True`.
+<img width="585" height="741" alt="boolean indexing" src="https://github.com/user-attachments/assets/7500b7c6-01e7-4907-9182-fb74c12d90f7" />
+
+#### Modifying elements with Boolean masks:
+You can modify values that meet specific criteria in one line, without any loops.  
+<img width="592" height="274" alt="Boolean masking" src="https://github.com/user-attachments/assets/3d1a3e5e-c84a-46ed-abae-6f7bc8de2cb6" />  
+
+## Module 3: Slicing in NumPy (Views vs. Copies)
+
+Slicing pulls out a range of elements using the `[start:stop:step]` format.
+
+### 3.1 1D Slicing  
+<img width="698" height="385" alt="1d slicing" src="https://github.com/user-attachments/assets/37850fd3-ccac-4fd7-9abb-4e2de98caf53" />  
+
+### 3.2 2D Slicing
+To slice a 2D matrix, specify row slicing and column slicing separated by a comma: **`matrix[row_start:row_stop, col_start:col_stop]`**.  
+<img width="625" height="674" alt="2d slicing" src="https://github.com/user-attachments/assets/0d1e2797-b29f-4533-8e1c-c78503759714" />  
+
+## Day 7
+## 30 June 2026
+## Assignment Questions  
+### Question 1  
+#### Without importing any external module (like "collections"), write a Python function count_frequencies(label_list) that takes a list of labels and returns a dictionary where keys are the unique labels and values are their occurrence counts. Test your function with the following list: labels = ["tumor", "healthy", "tumor", "cyst", "tumor", "healthy"] Expected output: {"tumor": 3, "healthy": 2, "cyst": 1}  
+<img width="811" height="556" alt="Answer 1" src="https://github.com/user-attachments/assets/cb44506d-826d-4bd9-b4a0-cc3670ea82f9" />  
+
+### Question 2  
+### Write a Python function is_prime(n) that checks if a number is prime. Then, write another function get_primes_in_range(start, end) that returns a list of all prime numbers between start and end (inclusive) by calling your is_prime function. Test your function with: get_primes_in_range(10, 50) Expected output: [11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]  
+<img width="443" height="625" alt="Answer 2" src="https://github.com/user-attachments/assets/9b0b6278-21e1-45a9-bf82-1f89a154f6cf" />  
+
+### Question 3 
+### Write a recursive function recursive_power(base, exponent) that calculates the value of base raised to the power of exponent (where exponent >= 0). - Do not use the "**" operator or the "math" module. - Clearly identify the base case and the recursive case. - Test your function with base = 3 and exponent = 4 (Expected output: 81).  
+<img width="654" height="525" alt="Answer 3" src="https://github.com/user-attachments/assets/c7fd1aac-ad16-424d-9083-6c68cc6119e8" />  
+
+### Question 4  
+### Write a Python function sum_of_digits(n) that takes a positive integer n and returns the sum of its digits without converting the number to a string. (Hint: Use modulus % 10 and floor division // 10 inside a loop). Test your function with: sum_of_digits(12345) Expected output: 15 (since 1 + 2 + 3 + 4 + 5 = 15)  
+<img width="628" height="486" alt="Answer 4" src="https://github.com/user-attachments/assets/6d534a25-a656-47bf-95df-87706babe83e" />  
+
+### Question 5  
+### Write a Python function calculate_precision_recall(actual, predicted) that takes actual ground-truth labels and model prediction labels. - Calculate: * True Positives (TP): actual is 1, predicted is 1. * False Positives (FP): actual is 0, predicted is 1. * False Negatives (FN): actual is 1, predicted is 0. - Calculate Precision and Recall using the formulas: Precision = TP / (TP + FP) Recall = TP / (TP + FN)  
+<img width="488" height="709" alt="Answer 5" src="https://github.com/user-attachments/assets/67ad2c7e-b621-4faa-b978-526d4f9a7a76" />  
+
+
+
+
+
+
+
+
 
 
 
