@@ -355,9 +355,7 @@ Formula: $n! = n \times (n-1)!$ with base case $0! = 1$ and $1! = 1$.
 <img width="702" height="297" alt="Recursive function" src="https://github.com/user-attachments/assets/3b68c097-62ab-4889-bff7-137348f59d1f" />  
 
 # Python Foundations — Python Data Structures (Lists, Tuples, Dictionaries, and Sets)  
-**Data Structures**—the backbone of data storage, manipulation, and processing in Python. In AI/ML, these collections are absolutely crucial: from organizing features and training labels, to configuring hyperparameters, creating vocabularies, and filtering unique class labels.
-
----
+**Data Structures**—the backbone of data storage, manipulation, and processing in Python. In AI/ML, these collections are absolutely crucial: from organizing features and training labels, to configuring hyperparameters, creating vocabularies, and filtering unique class labels.  
 
 ## Learning Objectives
 1. **Lists**: Mutable ordered sequences, common methods, indexing/slicing, and how they represent features and labels.
@@ -674,7 +672,115 @@ To slice a 2D matrix, specify row slicing and column slicing separated by a comm
 
 ### Question 5  
 ### Write a Python function calculate_precision_recall(actual, predicted) that takes actual ground-truth labels and model prediction labels. - Calculate: * True Positives (TP): actual is 1, predicted is 1. * False Positives (FP): actual is 0, predicted is 1. * False Negatives (FN): actual is 1, predicted is 0. - Calculate Precision and Recall using the formulas: Precision = TP / (TP + FP) Recall = TP / (TP + FN)  
-<img width="488" height="709" alt="Answer 5" src="https://github.com/user-attachments/assets/67ad2c7e-b621-4faa-b978-526d4f9a7a76" />  
+### - Note: Your code must handle division-by-zero checks to prevent crashes. - Test your function with:
+### actual = [1,0,1,1,0,0,1,0,1,1]
+### predicted = [1,0,0,1,0,1,1,0,1,0]
+<img width="568" height="834" alt="Answer 5" src="https://github.com/user-attachments/assets/41260600-a34e-4d2b-a884-d4483b3d3ba5" />  
+
+### Question 6  
+### Write two functions:  
+### a) format_names(learning_rate_val, batch_size_val) that prints the values formatted nicely, whereparameters comply with PEP 8 standards. b) parse_numbers_string(data_string) that takes a string of space-separated numbers (e.g., "1.52.30.94.1"),splits it, converts each element to a float, and returns the list.  
+<img width="582" height="678" alt="Answer 6" src="https://github.com/user-attachments/assets/1b0600d6-b5e2-43a2-af6f-46452175692f" />  
+
+### Question 7
+### You are given a list of feature values containing noisy outliers:
+### features = [1.2,105.4,0.9,-45.2,2.1,1.8,99.8,-0.5]
+### Write a single-line list comprehension that:
+### 1. Removes any outlier that is outside the range [-2.0, 10.0]. 2. Computes the square of the remaining valid feature values. Print both the original features list and the resulting squared valid features list.  
+<img width="995" height="301" alt="Answer 7" src="https://github.com/user-attachments/assets/e7d598db-76c8-401b-9f5b-fb242ae8cce6" />  
+
+### Question 8
+### Write a Python function named log_training_run that accepts: 
+### - One mandatory positional argument: model_name (str)
+### - Variable number of positional arguments: *metrics (representing loss values at different checkpoints)- Variable number of keyword arguments: **hyperparameters (like learning_rate, batch_size)
+### The function should:
+### 1. Print the model name in uppercase. 2. Print the average metric value (rounded to 4 decimal places). If no metrics are provided, print awarningmessage. 3. Iterate and print all hyperparameters in the format: [Key] -> [Value]. Example Call:
+### log_training_run("ResNet50", 0.85, 0.42, 0.15, learning_rate=0.001, optimizer="Adam")  
+<img width="656" height="795" alt="Answer 8" src="https://github.com/user-attachments/assets/0710dcd5-57a6-4a2f-b09e-f2bd71fc319f" />  
+
+### Question 9  
+### Write a Python function convert_temperature(temp, to_scale) that converts a temperature: - If to_scale is "C", convert the temperature from Fahrenheit to Celsius using the formula: C=(F- 32)*5/9.- If to_scale is "F", convert the temperature from Celsius to Fahrenheit using the formula: F=(C*9/5)+32.- The function should return the converted value rounded to 2 decimal places. Test your function with Celsius to Fahrenheit (37, "F") and Fahrenheit to Celsius (98.6, "C").  
+<img width="730" height="614" alt="Answer 9" src="https://github.com/user-attachments/assets/ef37673e-e6b2-4865-913e-532b380c0140" />  
+
+### Question 10  
+### In Natural Language Processing (NLP), Jaccard Similarity measures the similarity between twosetsofwords (documents) and is defined as:  
+### Jaccard Similarity = Size of (Set A Intersection Set B) / Size of (Set A Union Set B)  
+### Write a Python function jaccard_similarity(doc1, doc2) that:  
+### 1. Takes two strings, splits them into words, and converts them to lowercase. 2. Converts the word lists into sets. 3. Calculates and returns the Jaccard Similarity score (a float between 0.0 and 1.0). Test your function with:  
+### doc1 = "Python is great for machine learning" doc2 = "Machine learning in Python is awesome"  
+<img width="551" height="625" alt="Answer 10" src="https://github.com/user-attachments/assets/05cabe2f-86b0-47b5-82b7-4514817807f0" />  
+
+### Question 11  
+### Write a Python program that searches a list of sensor reading floats for any anomaly (definedas anyvaluestrictly less than 0.0 or strictly greater than 100.0). - If an anomaly is found, print the index and the anomalous value, and terminate the loop immediatelyusinga break statement. - If the loop completes and no anomaly is found, print "All sensor readings are normal." usingPython'sunique else clause for loops. Test your program with these two lists:  
+### readings_1 = [12.5,45.2,98.9,0.5,76.1]
+### readings_2 = [12.5,45.2,-1.2,98.9,105.4]  
+<img width="617" height="778" alt="Answer 11" src="https://github.com/user-attachments/assets/540f40bd-f356-48ae-a5e0-c69c8055cc95" />  
+
+### Question 12  
+### Write a recursive function decimal_to_binary(n) that takes a positive decimal integer n and returnsitsbinaryrepresentation as a string. - Hint: Think about dividing by 2 and taking the remainder. - Base Case: Identify what the function should return if n == 0. - Test it with n = 10 (Expected output: "1010") and n = 25 (Expected output: "11001").  
+<img width="640" height="509" alt="Answer 12" src="https://github.com/user-attachments/assets/d56abab2-f03d-441e-8b7d-91b77adc77bb" />  
+
+### Question 13
+### Write a Python function bitwise_check(num) that uses bitwise operators (do NOT use the modulus%operator, multiplication *, or division / operators) to:
+### a) Determine if num is odd or even (Hint: Use bitwise AND &). b) Multiply num by 4 (Hint: Use left shift <<). c) Perform floor division of num by 2 (Hint: Use right shift >>). Test your function with num = 12 and num = 15.  
+<img width="528" height="820" alt="Answer 13" src="https://github.com/user-attachments/assets/799129b6-838f-404b-a689-4fabaf636d85" />  
+
+### Question 14
+### You have raw data records containing user info as tuples:
+### raw_data = [(25, "Dev", "Delhi"), (30, "Aarav", "Mumbai"), (25, "Dev", "Delhi"), (22, "Neha", "Delhi"),(30,"Aarav", "Mumbai")]
+### Write a Python program that:
+### 1. Deduplicates the records using a Set and converts it back to a list of unique records. 2. Sorts the unique records by age in descending order. 3. Prints the final sorted unique list.
+<img width="852" height="644" alt="Answer 14" src="https://github.com/user-attachments/assets/06009b53-b40c-43bc-b11a-a72e0c21fd61" />  
+
+### Question 15
+### Write a Python function is_palindrome(text) that checks if a given string is a palindrome (reads thesameforward and backward). The function should ignore spaces, punctuation, and capitalization. Test your function with: - "A man a plan a canal Panama" (Expected output: True)
+### - "Machine Learning" (Expected output: False)  
+<img width="696" height="525" alt="Answer 15" src="https://github.com/user-attachments/assets/4a302140-771f-4216-92b3-e410fd122f41" />  
+
+### Question 16
+### When feeding images to neural networks, checking dimensions is crucial. Write a Python functionvalidate_image_shape(shape_tuple) that: - Receives a tuple representing image shape: (height, width, channels). - Returns True if:
+### 1. The image is square (height == width). 2. The image has either 1 channel (grayscale) or 3 channels (RGB). - Returns False otherwise. Test the function with (224, 224, 3), (128, 256, 3), and (512, 512, 4).  
+<img width="715" height="525" alt="Answer 16" src="https://github.com/user-attachments/assets/a07ad3f0-68b9-4228-92ab-919315c963e0" />  
+
+### Question 17
+### Casting a list containing duplicate elements to a Set (e.g., unique_list = list(set(original_list))) removesduplicates, but it does not guarantee that the original order of elements is preserved. Write a Python function deduplicate_preserve_order(input_list) that removes duplicate elements fromalistwhile keeping the exact order of their first occurrence. Test your function with:
+### sample_list = ["apple", "banana", "apple", "cherry", "banana", "date"]
+### Expected output: ["apple", "banana", "cherry", "date"]  
+<img width="833" height="576" alt="Answer 17" src="https://github.com/user-attachments/assets/c6724271-b1f1-47c1-9a81-2f283c999813" />  
+
+### Question 18
+### Given two lists:
+### student_names = ["Aarav", "Dev", "Neha", "Priya"]
+### scores = [88, 95, 78, 92]
+### Write a single for loop that uses both enumerate and zip to print the rank, name, and score of eachstudentinthe following format:
+### Rank 1: Aarav scored 88/100
+### Rank 2: Dev scored 95/100
+### Rank 3: Neha scored 78/100
+### Rank 4: Priya scored 92/100  
+<img width="892" height="288" alt="Answer 18" src="https://github.com/user-attachments/assets/a5ed298f-522e-48be-ab37-6156109e9981" />  
+
+## Day 8
+## 2 July 2026
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
