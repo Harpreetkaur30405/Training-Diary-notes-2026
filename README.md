@@ -761,6 +761,102 @@ To slice a 2D matrix, specify row slicing and column slicing separated by a comm
 
 ## Day 8
 ## 2 July 2026
+## Pandas Essentials — DataFrames and Data Manipulation
+
+we transition to **Pandas** (Python Data Analysis Library), the standard Python package used to load, clean, analyze, and transform tabular datasets.
+
+## What is Pandas?
+Pandas is an open-source Python library that provides high-performance, easy-to-use data structures and data analysis tools. It is built on top of NumPy, meaning it inherits NumPy's speed while adding indexable rows and columns.
+
+### Why do we need Pandas in Data Science?
+Standard Python lists and dictionaries are highly flexible but slow for doing heavy data calculations. NumPy arrays are extremely fast but can only hold a single data type (homogeneous) and lack labeled columns or rows. 
+
+Pandas combines the best of both worlds: it handles tables of mixed data types (heterogeneous) and allows us to reference columns by name and rows by indices.
+
+| Feature | Python Lists / Dicts | NumPy Arrays | Pandas DataFrames / Series |
+| :--- | :--- | :--- | :--- |
+| **Structure** | Unstructured or Nested | Homogeneous N-D Array | Heterogeneous Tabular 2D Grid / 1D Columns |
+| **Row/Col Labels** | Index only / Dict keys | Numeric index only | Custom Index & Column Labels |
+| **Data Types** | Mixed (slow) | Homogeneous (fast) | Mixed per column (fast, built on NumPy) |
+| **Missing Data** | `None` (manual check) | `nan` (limited support) | `NaN` / `None` (built-in automatic alignment & handling) |
+
+### 🧠 Data Structures Visual representation:
+```text
+Pandas Series (1D column with index):
+       Index    Values
+         0  ──►  23
+         1  ──►  45
+         2  ──►  31
+
+Pandas DataFrame (2D table made of aligned Series columns):
+       Index      Name      Age     Income
+         0   ──►  Alice     23      50000
+         1   ──►  Bob       45      85000
+         2   ──►  Charlie   31      62000
+```
+## Module 1: Pandas Data Structures (Series & DataFrames)
+
+The two primary structures in Pandas are the **`Series`** (1-dimensional) and the **`DataFrame`** (2-dimensional). 
+
+- **Series**: A one-dimensional labeled array capable of holding any data type (integers, strings, floating point numbers, Python objects, etc.).
+- **DataFrame**: A two-dimensional labeled data structure with columns of potentially different types, like a spreadsheet or SQL table.
+<img width="436" height="499" alt="Example pandas" src="https://github.com/user-attachments/assets/f0eb847b-d622-4db5-9c03-637f4d8db55a" />
+<img width="619" height="672" alt="Pandas example 2" src="https://github.com/user-attachments/assets/f2615571-2e2e-48a1-963b-a4483f097532" />
+
+## Module 2: Reading Data & Dataset Inspection
+
+Usually, datasets are loaded from external files (like CSV or Excel). We use **`pd.read_csv()`** to load CSV files.
+
+<img width="673" height="514" alt="data csv" src="https://github.com/user-attachments/assets/c36def37-5ddc-454a-95f9-e773322254bc" />  
+<img width="179" height="317" alt="dtypes" src="https://github.com/user-attachments/assets/018e5cd7-726f-4248-b28a-ca60d1d80ea2" />  
+<img width="444" height="468" alt="df shape and info" src="https://github.com/user-attachments/assets/72e44a49-4081-417a-b1ea-75fbeb8e006d" />  
+<img width="477" height="565" alt="df head and tail" src="https://github.com/user-attachments/assets/0bade206-a1bc-402f-a0f2-4ea325f61c91" />  
+<img width="547" height="674" alt="df columns" src="https://github.com/user-attachments/assets/fee72fc7-3dae-4099-ab51-acd2808e4b19" />  
+
+## Day 9
+## 3 July 2026
+## Module 3: Slicing & Selecting Data
+
+Extracting subsets of columns and rows is standard practice.
+- **Column Selection**: Select columns using brackets `df['col_name']` or a list of columns `df[['col1', 'col2']]`.
+- **Positional Slicing (`.iloc`)**: Select rows and columns by integer index position `.iloc[row_idx, col_idx]`.
+- **Label-based Indexing (`.loc`)**: Select rows and columns by labels `.loc[row_label, col_label]`.
+<img width="462" height="866" alt="slicing pandas" src="https://github.com/user-attachments/assets/f5eb64d9-1068-4805-b4a4-74e8efff7b32" />
+
+## Module 4: Boolean Indexing: Filtering Rows
+
+In Machine Learning, we often filter records based on specific criteria (e.g. selecting rows where income is above a threshold).
+- Wrap conditions in parentheses.
+- Use bitwise operators: `&` for **AND**, `|` for **OR**, `~` for **NOT**.
+<img width="640" height="683" alt="boolean indexing nad masking" src="https://github.com/user-attachments/assets/7b816406-5277-48bb-9b21-6f606094a28a" />
+
+## Module 5: Cleaning Missing Data (NaNs)
+
+Real-world datasets contain gaps (represented as `NaN` — Not a Number). Machine Learning models cannot be trained with missing inputs. We must handle them:
+1. **Detecting Nulls**: Check null value counts per column using `.isnull().sum()`.
+2. **Strategy A (Imputation)**: Fill NaNs using `.fillna()`.
+3. **Strategy B (Deletion)**: Remove rows containing NaNs using `.dropna()`.  
+<img width="516" height="726" alt="missing values" src="https://github.com/user-attachments/assets/b3683cb4-8e36-403e-9c82-47587f22873e" />
+
+## Module 6: Groupby & Aggregations
+
+Analyzing stats by grouping categories is essential (e.g. comparing average income of customers who purchased vs those who didn't). We use **`.groupby()`** followed by an aggregation function like `.mean()`, `.sum()`, `.count()`.  
+<img width="612" height="329" alt="group by example" src="https://github.com/user-attachments/assets/a8e579f0-938e-440c-8620-553bb266b73f" />  
+
+## Day 10
+## 6 July 2026
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
