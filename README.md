@@ -845,6 +845,96 @@ Analyzing stats by grouping categories is essential (e.g. comparing average inco
 
 ## Day 10
 ## 6 July 2026
+##  Data Visualization — Matplotlib and Seaborn (For Beginners!)
+
+Welcome to Day 8! Now that you know how to organize data with Pandas and NumPy, it's time to learn the most fun part of coding: **drawing pictures with numbers!**
+
+### Why do we visualize data?
+Imagine someone gives you a list of 1000 numbers. It is almost impossible to find the pattern by just reading them! But if you plot them as dots or lines on a screen, you might see a hidden shape, a trend going up, or a single weird point way off in the corner.
+
+Today, we will learn:
+1. **Matplotlib**: Our digital drawing board where we draw lines, bars, and dots.
+2. **Seaborn**: Our magic paint box that sits on top of Matplotlib and makes our charts look beautiful and modern.
+
+Let's import our tools first!  
+<img width="1775" height="582" alt="install matplotlib" src="https://github.com/user-attachments/assets/6a809d72-61b5-4bc9-9f46-acc47f50ada9" />  
+<img width="1769" height="674" alt="matplotlib" src="https://github.com/user-attachments/assets/e888c848-af77-42cc-8f71-82539b2d53d2" />  
+<img width="1792" height="720" alt="seaborn and pandas" src="https://github.com/user-attachments/assets/a2ad987d-4f43-4809-a61c-d3fe79ff7111" />  
+<img width="1003" height="889" alt="example of data visualization" src="https://github.com/user-attachments/assets/ab901858-f164-4e90-8343-9bd72db976ea" />  
+
+## Module 1: Matplotlib (Our Drawing Canvas)
+Matplotlib is like a piece of graph paper where we can draw whatever we want. We use `plt` to draw lines, bars, and scatter dots.
+
+### 📈 Task 1: Line Plots (Tracking a Superhero's Speed)
+A **Line Plot** connects sequential dots with lines to show how something changes over time.
+* **Story**: Imagine tracking a superhero's flight speed as they train over 5 days.
+* **What we learn from this plot (Plot Insight)**: **Identifying Trends!** It tells us whether their speed is going up (improving) or going down, and how fast they are progressing.
+<img width="1102" height="859" alt="line plot" src="https://github.com/user-attachments/assets/4530e423-6bef-498e-9217-4310a9b8752f" />
+
+<img width="700" height="798" alt="example of line plot" src="https://github.com/user-attachments/assets/b231fb7e-9145-4d9a-80f9-20e6943f1c54" />  
+
+### 📊 Task 2: Bar Plots (Comparing Favorite Treats)
+A **Bar Plot** uses vertical columns to compare different groups or categories of things.
+* **Story**: We asked our friends how many treats they ate this week. We want to see which treat was the most popular!
+* **What we learn from this plot (Plot Insight)**: **Comparing Categories!** We can instantly see which treats were eaten the most (highest bar) and which were eaten the least (lowest bar) without reading a table of numbers.
+<img width="749" height="768" alt="Bar plot" src="https://github.com/user-attachments/assets/dfb48984-85e5-45ad-a159-36bd94ffc796" />
+
+### 📍 Task 3: Scatter Plots (Treasure Map Hunt!)
+A **Scatter Plot** shows individual dots at specific (X, Y) coordinates, without connecting them. It is like placing flags on a map.
+* **Story**: Imagine you are looking at a treasure map grid. Each star is where a player found a hidden treasure chest.
+* **What we learn from this plot (Plot Insight)**: **Spotting Relationships and Clusters!** It shows where the points group together (clusters of gold!) or if they follow a pattern (like a diagonal line showing that treasures are found further north as you go east).
+<img width="876" height="802" alt="scatter plot" src="https://github.com/user-attachments/assets/266f1e0c-f451-44cd-b895-77323762b11d" />
+
+## Module 2: Seaborn (The Magic Paintbrush)
+Seaborn is built on top of Matplotlib. It handles all the complex styling details automatically, making our charts look professional and polished with very little code.
+
+## Day 11
+## 7 July 2026
+### 📊 Task 4: Histograms & KDE (Candy Count Distribution)
+A **Histogram** groups individual numbers into "bins" (ranges) and shows columns representing how many items fall into each range.
+* **Story**: Imagine 30 kids count how many candies they collected at a party. We want to see how candy counts are distributed.
+* **What we learn from this plot (Plot Insight)**: **Data Distributions!** We learn how our data is spread out. Are the candy counts mostly centered around a single number (symmetrical/normal distribution)? Or are they skewed (e.g., almost everyone got very few candies, or almost everyone got a lot)? The smooth KDE curve line shows the general shape of this distribution density.
+<img width="445" height="801" alt="Histogram Plot" src="https://github.com/user-attachments/assets/9c41041a-c9f0-4a4f-b080-05b51015be57" />
+
+### 📦 Task 5: Box Plots (Outlier Detection in Frog Jumps)
+A **Box Plot** summarizes a dataset's distribution using a box and lines. It is the absolute best tool for spotting **outliers** (extreme numbers that are weirdly different from the rest).
+* **Story**: We measured how far 10 frogs can jump (in feet). Most frogs jumped between 4 and 8 feet, but one "super-frog" jumped 18 feet!
+* **What we learn from this plot (Plot Insight)**: **Detecting Outliers & Quartiles!**
+  * The **box** in the middle shows where the middle 50% of the frogs jumped.
+  * The line inside the box is the **median** (the middle score).
+  * The **whiskers** (lines extending from the box) show the normal min and max ranges.
+  * The single dot way outside the whiskers represents our **outlier** (the super-frog jump!).
+<img width="750" height="697" alt="Box plot" src="https://github.com/user-attachments/assets/ae1a4e94-606e-40a3-b85e-c2c59fc6b8e8" />
+
+### 🌡️ Task 6: Correlation Heatmaps (What makes a Video Game popular?)
+A **Correlation Heatmap** is a grid of colored cells showing how strongly different numeric columns are related to each other.
+* **Story**: We want to understand what makes a video game popular. We analyze Play Time, Popularity Score, and Game Difficulty.
+* **What we learn from this plot (Plot Insight)**: **Understanding Correlation!**
+  * Correlation values range from **-1.0** to **1.0**.
+  * **Close to 1.0 (Positive)**: Features grow together (e.g., Play Time and Popularity have a strong positive correlation). Colored in **warm colors** (red/orange).
+  * **Close to -1.0 (Negative)**: As one goes up, the other goes down (e.g., Game Difficulty and Popularity might have a negative correlation because hard games can frustrate players!). Colored in **cool colors** (blue).
+  * **Close to 0.0**: The features have no relationship.
+<img width="541" height="733" alt="correlation heatmaps" src="https://github.com/user-attachments/assets/45022ccf-e527-49fa-a9ad-e4285d4ba1de" />
+
+## 💡 Let's Review: The Visual Cheat Sheet!
+When should you use each chart?
+1. **Line Plot**: Use this to show a **trend** over time (e.g., height growing each year).
+2. **Bar Plot**: Use this to **compare categories** (e.g., number of students who like apples vs bananas).
+3. **Scatter Plot**: Use this to show **individual coordinates** and find clusters (e.g., positions on a coordinate plane).
+4. **Histogram**: Use this to show **distribution** (e.g., how many students got scores in the 70s, 80s, or 90s).
+5. **Box Plot**: Use this to spot **outliers** (e.g., finding the single giant height in a primary school class).
+6. **Heatmap**: Use this to see how multiple columns **correlate** together.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
