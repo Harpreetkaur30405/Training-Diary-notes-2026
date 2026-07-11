@@ -925,7 +925,19 @@ When should you use each chart?
 5. **Box Plot**: Use this to spot **outliers** (e.g., finding the single giant height in a primary school class).
 6. **Heatmap**: Use this to see how multiple columns **correlate** together.
 
+## Day 12
+## 8 July 2026
+Exploratory Data Analysis (EDA) — Detective Work on House Prices! 🕵️‍♂️🏠
 
+We have a case file of over **21,000 houses** in King County, USA. Some are tiny, some are huge, some are cheap, and some cost millions of dollars! 
+
+**Our Mission:** Find out what makes a house expensive or cheap! 
+We will use our "spy gear" (Python libraries) to look for clues, draw pictures, and map out connections in the data. This is what data scientists call **Exploratory Data Analysis (EDA)**.
+## 🔍 Step 1: Load Our Spy Gear (Libraries)
+First, we need to gather our tools:
+- **Pandas** 🐼: Our case file organizer. It helps us read and sort tables.
+- **NumPy** 🔢: Our magnifying glass for fast math operations.
+- **Matplotlib & Seaborn** 🎨: Our digital drawing board and magic paint box to paint pictures of numbers.
 
 
 
