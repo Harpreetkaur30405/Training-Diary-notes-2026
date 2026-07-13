@@ -938,6 +938,132 @@ First, we need to gather our tools:
 - **Pandas** 🐼: Our case file organizer. It helps us read and sort tables.
 - **NumPy** 🔢: Our magnifying glass for fast math operations.
 - **Matplotlib & Seaborn** 🎨: Our digital drawing board and magic paint box to paint pictures of numbers.
+<img width="783" height="322" alt="example 3" src="https://github.com/user-attachments/assets/13b66c37-5188-43d3-8848-dacd2b972351" />
+
+## Step 2: Load the Dataset  
+Loading the dataset means importing the data file into Python so it can be analyzed, cleaned, and used for Machine Learning. After loading, the data is stored as a DataFrame, making it easy to access and work with.  
+<img width="1106" height="303" alt="Load the dataset" src="https://github.com/user-attachments/assets/73d69438-6a30-46df-8acd-629325ef170b" />  
+
+## ✂️ Step 3: Simplifying the Clues (Keeping Only What We Understand)
+The raw dataset has columns like `sqft_living15` and `lat` (latitude) which can be confusing. 
+Let's focus only on the **most fun and intuitive features** that we all understand! 
+
+We will keep:
+- `price`: The price of the house (Target value)
+- `bedrooms`: How many bedrooms it has
+- `bathrooms`: How many bathrooms it has
+- `sqft_living`: The size of the house (living space in square feet)
+- `floors`: How many stories/floors the house has
+- `waterfront`: If it has a lake/beach view (1 = yes, 0 = no)
+- `yr_built`: The year the house was built
+- `condition`: How clean/well-maintained the house is (1 = poor, 5 = excellent)
+<img width="894" height="476" alt="Step 3" src="https://github.com/user-attachments/assets/5e6c34f0-1c97-4a55-baa3-093ff3c5804c" />
+
+## 📊 Step 4: The Detective Statistics
+Let's get a quick summary. What is the average price? When was the oldest house built? What is the size of the biggest house? 
+We can do this easily with `.describe()`!  
+<img width="507" height="699" alt="step 4" src="https://github.com/user-attachments/assets/0284996a-a68c-4798-850f-dc9c15b2e8c3" />  
+
+## 📈 Step 5: Visualizing Clue 1 — The Price Mountain (Univariate Analysis)
+Let's look at the distribution of the house prices. Are most houses cheap, average, or extremely expensive? 
+We will plot a **histogram** to see the "Price Mountain" shape.  
+<img width="908" height="781" alt="step 5" src="https://github.com/user-attachments/assets/e4ad6b80-26f0-4e54-8d4f-d653b241250e" />  
+
+## 🛏️ Step 6: Visualizing Clue 2 — The Bedroom Count
+Let's check how many bedrooms most houses have. What is the most common number? And look out for any crazy outliers (like a house with 33 bedrooms!) using a **countplot**.  
+<img width="784" height="802" alt="Step 6" src="https://github.com/user-attachments/assets/316cdd5b-1561-46dd-b2a5-e4bfba02dc9c" />  
+
+## 📏 Step 7: Connecting the Dots — Size vs. Price (Bivariate Analysis)
+Let's check if bigger houses always cost more. We will draw a **scatter plot** where every dot represents a house. If the dots trend upwards, it means: *Larger House = Higher Price!*  
+<img width="763" height="755" alt="step 7" src="https://github.com/user-attachments/assets/eec245fe-3d55-4ee2-a3d1-230b8cb6b4e7" />  
+
+## 🌊 Step 8: Waterfront Houses — Living by the Lake (Bivariate Analysis)
+Does living near a beach or lake make a house more expensive? Let's check with a **box plot** which shows the median and spread of prices.  
+<img width="648" height="590" alt="step 8" src="https://github.com/user-attachments/assets/7cec28b2-5e54-45c3-a1ae-5cfcb716030b" />  
+
+## 🛠️ Step 9: House Condition — Does Neater Mean Costlier?
+How does the condition of the house affect its price? Let's plot the average price for each condition rating (1 is messy, 5 is perfect!).  
+<img width="645" height="578" alt="step 9" src="https://github.com/user-attachments/assets/5eb49d9d-60e7-4720-a516-fea85df33be4" />  
+
+## 🗺️ Step 10: The Detective's Map — The Connection Matrix
+Let's draw a **heatmap**! It shows correlation (from -1 to +1). 
+If two features are close to +1, they move together like best friends. If they are close to 0, they don't affect each other.  
+<img width="568" height="809" alt="step 10" src="https://github.com/user-attachments/assets/264b08a7-69d1-482d-83c3-63ad2b80f7b5" />  
+
+## Day 13
+## 9 July 2026
+Data Preprocessing — Washing & Sorting our Lego Blocks! 🧼🧱
+we need to prepare our house data for our **Machine Learning Robot**. 
+
+**Why do we do Preprocessing?**
+Machine learning models are like smart robots, but they are also very picky. They only eat **clean, neat, and scaled numbers**. 
+If we feed them messy data, they will output garbage (*Garbage in, Garbage out!*). Preprocessing is like washing and sorting Lego blocks before building a castle.  
+## 🧼 Step 1: Import Preprocessing Gear & Load Data
+Let's import our libraries and load the dataset we saved yesterday.  
+<img width="1693" height="495" alt="install scikit learn" src="https://github.com/user-attachments/assets/7c7e6d93-970f-4e7c-b480-f584e81cd37a" />  
+<img width="813" height="735" alt="example of scikit learn" src="https://github.com/user-attachments/assets/80df3b5e-be47-4a9d-80c5-4b623f2ded4f" />  
+
+## 🧩 Step 2: The Mystery of the Missing Values (Imputation)
+Real-world data often has blanks (missing values). To practice resolving this, let's randomly hide the birth year (`Year_Built`) for 100 houses and learn how to solve it!
+
+### Analogy: Filling in the Blanks
+We call this **Imputation**. If a house's build year is missing, we fill it using the **median** (the middle-of-the-road year). Why the median instead of the mean? Because the median is robust and won't get pulled away by one or two extremely old castles!  
+
+## 🤠 Step 3: Taming the Giants (Outlier Capping)
+Remember the house with 33 bedrooms? Or giant mansions? 
+Extreme values are like **Giants** in our dataset. They confuse our ML robot during training. We can use a trick called **IQR (Interquartile Range) Capping** to trim their tall hats so they fit in our room, without deleting the data!  
+<img width="911" height="676" alt="example of scikit" src="https://github.com/user-attachments/assets/a9496cfc-6513-477e-b3c3-28c88c1c970b" />  
+
+<img width="616" height="741" alt="example of scikit 2" src="https://github.com/user-attachments/assets/ee38b391-be51-489e-a66a-6d3d12b36c38" />  
+
+<img width="641" height="447" alt="example of scikit 3" src="https://github.com/user-attachments/assets/98293a15-302c-4e80-a29e-47f292e13582" />  
+
+## ⚖️ Step 4: Balancing the Scales (Feature Scaling)
+Why scale?
+- Size range: 290 to 4,234 sqft.
+- Bedroom range: 1 to 5 rooms.
+Because house size numbers are so much bigger, the robot will think size is thousands of times more important than bedroom count! 
+
+We have two common scaling methods:
+1. **MinMaxScaler (0 to 1 scaling)**: Shrinks data so the smallest value becomes 0 and the largest becomes 1. Like shrinking a giant Lego model to fit in a pocket!
+2. **StandardScaler (Average scaling)**: Centers data so the average becomes 0. If you are average height, you are 0. If you are taller, you get a positive score; if shorter, a negative score.
+
+If you feed this data straight into an AI algorithm, the algorithm will look at the massive numbers in the "Price" column and assume it is way more important than the "Bedrooms" column, just because the numbers are bigger.  
+<img width="668" height="291" alt="step 4 valued" src="https://github.com/user-attachments/assets/5e75d753-fa8d-410b-938a-40a3c32091ff" />  
+
+## 🏷️ Step 5: Translating Words to Numbers (One-Hot Encoding)
+Machine learning robots don't read words, they only read numbers! 
+If we have a category like "Neighborhood" (with values like Budget, Mid-Range, Premium), how do we explain this to the robot?
+
+### The Flag Game (One-Hot Encoding)
+We create new columns representing each word flag. A house gets a `1` if it matches, and `0` if it doesn't.  
+<img width="682" height="483" alt="step 5" src="https://github.com/user-attachments/assets/c4c4f90a-54ea-4c6b-b8ed-7302efddc5fc" />  
+
+## 🎉 Step 6: Final Review & Saving the Preprocessed Lego Blocks!
+Let's select our final preprocessed features and save them to a file. Our dataset is now perfectly clean and ready to train any AI model!  
+<img width="707" height="758" alt="step 6" src="https://github.com/user-attachments/assets/5f6853f9-1272-4301-93f9-85cbdc61833b" />  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
