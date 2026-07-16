@@ -992,7 +992,7 @@ If two features are close to +1, they move together like best friends. If they a
 
 ## Day 13
 ## 9 July 2026
-Data Preprocessing — Washing & Sorting our Lego Blocks! 🧼🧱
+## Data Preprocessing — Washing & Sorting our Lego Blocks! 🧼🧱
 we need to prepare our house data for our **Machine Learning Robot**. 
 
 **Why do we do Preprocessing?**
@@ -1042,6 +1042,113 @@ We create new columns representing each word flag. A house gets a `1` if it matc
 ## 🎉 Step 6: Final Review & Saving the Preprocessed Lego Blocks!
 Let's select our final preprocessed features and save them to a file. Our dataset is now perfectly clean and ready to train any AI model!  
 <img width="707" height="758" alt="step 6" src="https://github.com/user-attachments/assets/5f6853f9-1272-4301-93f9-85cbdc61833b" />  
+
+## Day 14
+## 13 July 2026
+## Linear Regression — Training our First AI Robot to Predict House Prices! 🤖📈
+
+### What is Linear Regression?
+Imagine you are looking at a scatter plot of house sizes vs. prices. You notice that as size increases, price generally goes up. If you took a pencil and drew a straight line through the center of those points to show the trend, you would be doing manual linear regression!
+
+In machine learning, we let the computer (our robot) find the mathematically perfect straight line that fits the data. Once the robot has this line, it can use it to predict the price of any new house just by looking at its size!
+
+## 🔌 Step 1: Import our Tools & Load the Clean Data
+
+Let's import our favorite libraries: `pandas`, `numpy`, `matplotlib`, and `seaborn`. We will also import the `LinearRegression` model and splitting/evaluation tools from `scikit-learn` (`sklearn`).
+<img width="1429" height="701" alt="Example LR" src="https://github.com/user-attachments/assets/66ed7bcb-128a-4c55-8ddb-5875522e8825" />  
+
+## 🎓 Step 2: Splitting the Work (Train / Test Split)
+
+Before we train our model, we must split our dataset into two sets:
+1. **Training Set (80%)**: The dataset our robot will study to learn the patterns and relationships.
+2. **Testing Set (20%)**: The dataset we will use to test our robot on "unseen" questions to see how smart it really is.
+
+### The Math Exam Analogy 📝
+If you study for a math test using practice questions, and the teacher gives you the exact same practice questions on the actual exam, you might get a 100% just by memorizing the answers. You wouldn't prove you actually understand math!
+To test if you truly understand math, the teacher must give you *new, unseen questions* on the exam. 
+Similarly, we train the model on training data, and evaluate it on test data.
+<img width="1121" height="572" alt="example 2 lR" src="https://github.com/user-attachments/assets/5e2d5345-4925-451b-a786-fd2bd2587709" />  
+
+## 🤖 Step 3: Simple Linear Regression (One Clue)
+
+Let's start simple. We will train our robot using only **one clue**: `Scaled_size` (the size of the house) to predict the house `price`.
+<img width="889" height="475" alt="example 3 LR" src="https://github.com/user-attachments/assets/a07db972-d732-471f-8096-26c9b58280f7" />  
+
+## 🧠 Step 4: Looking Inside the Robot's Brain
+
+Remember the equation of a line from algebra class?
+$$
+y = m \cdot x + c
+$$
+Where:
+- $y$ is the predicted house Price
+- $x$ is the scaled Size (`Scaled_size`)
+- $m$ is the **Slope** (Coefficient) — how much the price increases per unit size
+- $c$ is the **Intercept** — the baseline price of a house if its size was 0
+
+Let's inspect the values of $m$ and $c$ that our robot learned!  
+<img width="1017" height="385" alt="LR" src="https://github.com/user-attachments/assets/58b9dd7b-a5f3-46c8-a2cf-b56f688bb393" />  
+
+## 📊 Step 5: Visualizing the Best-Fit Line
+
+Let's plot the actual test houses (as dots) and overlay our robot's prediction line (in red)!
+<img width="625" height="793" alt="example 4 lr" src="https://github.com/user-attachments/assets/f91715b9-2be3-477a-906a-1fee6a654172" />  
+
+## 🚀 Step 6: Multiple Linear Regression (All Clues!)
+
+Using just the house size gets us a good start, but houses are complex! They have bedrooms, bathrooms, floors, and are in different neighborhoods.
+
+Let's train a new model using **all** our preprocessed features to see if our robot gets smarter when we give it more clues!
+<img width="992" height="423" alt="example 5 lr" src="https://github.com/user-attachments/assets/1401bc8a-9a27-41e5-8b18-099dd4db0d55" />  
+
+## 🏠 Step 7: Predicting a Custom House Price
+
+Let's play around and ask our Multiple Regression model to predict the price of a custom house that we specify!
+
+Here is the order of features the model expects:
+- `bedrooms`
+- `bathrooms`
+- `Scaled_size`
+- `floors`
+- `waterfront`
+- `sqft_living`
+- `condition`
+- `Loc_Budget`
+- `Loc_Mid-Range`
+- `Loc_Premium`
+<img width="624" height="666" alt="example 6 lr" src="https://github.com/user-attachments/assets/2daf3a9f-034d-4191-a47c-20902ffe5b15" />
+
+## 🎯 Step 8: How Do We Know If Our Model Is Accurate? (Model Evaluation)
+
+Now that we have trained both the **Simple Linear Regression** model and the **Multiple Linear Regression** model, how can we know how accurate they are? How do we measure the intelligence of our AI models?
+
+In machine learning, we evaluate regression models on the test set (our "exam paper") using two key metrics:
+
+### 1. Mean Absolute Error (MAE) 💸
+* **What is it?** MAE measures the average size of the mistakes our model makes. On average, how many dollars off are our predictions from the actual prices?
+* **Analogy:** If a house actually sold for $300,000, and our model predicted $280,000, the error is $20,000. MAE is the average of these absolute errors for all houses in our test set.
+* **How to read it:** **Lower is better!** A lower MAE means the robot's predictions are closer to the real prices on average.
+
+### 2. $R^2$ Score (Coefficient of Determination) 📈
+* **What is it?** This score (ranging from 0 to 1, or 0% to 100%) tells us how much of the variance in house prices can be explained by our clues.
+* **Scale:**
+  * `0.0` (0%) means the model is useless (it just guesses the average house price every time).
+  * `1.0` (100%) means the model is perfect (it predicts every house price with 100% precision).
+* **How to read it:** **Higher is better!** An $R^2$ score of 0.70 means our clues explain 70% of why house prices go up or down.
+
+Let's write the code to evaluate both models and compare them side-by-side!
+<img width="1169" height="519" alt="step 8 lr" src="https://github.com/user-attachments/assets/38a7491b-22e6-4987-aee1-b48845c369bf" />  
+
+
+
+
+
+
+
+
+
+
+
 
 
 
