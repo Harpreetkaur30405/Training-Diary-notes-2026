@@ -1139,6 +1139,63 @@ In machine learning, we evaluate regression models on the test set (our "exam pa
 Let's write the code to evaluate both models and compare them side-by-side!
 <img width="1169" height="519" alt="step 8 lr" src="https://github.com/user-attachments/assets/38a7491b-22e6-4987-aee1-b48845c369bf" />  
 
+## Day 15
+## 14 July 2026
+## Polynomial Regression — Teaching our Robot to Curve! 🤖〰️
+
+Welcome back, Data Builders! Yesterday, we trained our first Linear Regression model to predict house prices using straight lines.
+
+But what if the relationship between our clues (like house size) and the price isn't a straight line? What if it's curved? Today, we are going to teach our AI robot how to **bend the line** to capture curves using **Polynomial Regression**!
+
+---
+
+### 🎢 The Roller Coaster Analogy: What is Polynomial Regression?
+
+Imagine you have a robot friend.
+* **Linear Regression:** The robot is only allowed to draw **straight lines** with a ruler. If our data points form a straight path, the robot does a great job. But what if the data points go up and down like a roller coaster or a smile? A straight line will miss most of the points!
+* **Polynomial Regression:** We give the robot a **flexible ruler** that can bend! This allows the robot to draw **curves** to fit the dots much better.
+
+---
+
+### 📏 How Do We Know if Our Robot is Smart? (Our Metrics)
+
+To see how well our robot is doing, we check two things:
+1. **MAE (Mean Absolute Error) 🎯**:
+   * Think of this as the **"Average Miss."**
+   * If a house actually costs \$300,000, and our robot guesses \$280,000, it missed by \$20,000.
+   * MAE calculates the average amount our robot misses by across all houses. **Smaller is better!**
+2. **Accuracy (R² Score) 🧠**:
+   * Think of this as the **"Robot's Grade."**
+   * It tells us how much smarter our robot is compared to a simple guesser that just guesses the average price of all houses.
+   * A score of `1.0` (or `100%`) means a perfect grade (zero mistakes!).
+
+## 🔌 Step 1: Import our Tools & Load the Clean Data
+
+Let's import our favorite libraries and load the same preprocessed house dataset `kc_house_preprocessed.csv`.
+<img width="479" height="738" alt="step 1 pl" src="https://github.com/user-attachments/assets/dab83022-94da-4006-979c-a6252fa7e6b4" />  
+
+## 🤖 Step 2: Train the Bendy Line Robot (Polynomial Regression)
+
+We will train a Polynomial Regression model of Degree 2. This creates a squared feature ($Size^2$) which lets the robot bend the line to capture the curve.
+<img width="564" height="188" alt="step 2 polynomial" src="https://github.com/user-attachments/assets/72d6b3a0-5b78-4248-9435-fc451a5d18e6" />  
+
+## 📈 Step 3: Measure the Robot's Performance
+
+Let's see how well our robot predicts house prices on the test data by calculating the MAE (Average Miss) and Accuracy ($R^2$ Score).
+<img width="407" height="433" alt="step 3 pl" src="https://github.com/user-attachments/assets/8d3ff4b0-dd0a-463f-8356-dba516cb0c0c" />  
+
+--- 
+## 🎨 Step 4: Visualize the Curved Polynomial Line
+
+Now let's draw the actual house data points and overlay the curved line our robot learned. This is much easier to explain to children!
+<img width="874" height="814" alt="polynomial" src="https://github.com/user-attachments/assets/c8d13c7a-5f72-43cc-97f3-8b95d77bc50b" />  
+
+
+
+
+
+
+
 
 
 
