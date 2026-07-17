@@ -1190,6 +1190,64 @@ Let's see how well our robot predicts house prices on the test data by calculati
 Now let's draw the actual house data points and overlay the curved line our robot learned. This is much easier to explain to children!
 <img width="874" height="814" alt="polynomial" src="https://github.com/user-attachments/assets/c8d13c7a-5f72-43cc-97f3-8b95d77bc50b" />  
 
+## Day 16
+## 15 July 2026
+## Ridge & Lasso Regularization — Putting a Leash on our Robot! 🎗️🪓
+
+But sometimes, if we allow our robot to bend the line too much (like using a very high degree curve), it goes completely wild! It tries too hard to touch every single dot in our training set, making the line look like a crazy zig-zag. This is called **Overfitting**.
+
+Today, we are going to learn how to **tame our robot** using a technique called **Regularization**—which is basically putting a leash on the robot so it draws smooth, sensible curves!
+
+
+### 🎓 The "Try-Hard Student" Analogy: What is Overfitting?
+
+Imagine two students studying for a math test:
+* **The Memorizer (Overfitting):** This student memorizes the exact numbers from the practice questions. When they see the exact same questions, they get 100%. But on the real test with new numbers, they get a bad grade because they didn't learn the general pattern.
+* **The Smart Learner (Regularization):** This student focuses on learning the general rules and patterns. They might miss a few practice questions, but they get a great grade on the real test because they can handle new numbers!
+
+Regularization is how we force our robot to be a **Smart Learner** rather than a **Memorizer**.
+
+### 🎗️ The Two Types of Leashes
+
+We have two popular leashes to control our robot:
+1. **Ridge Regression (L2 Penalty) 🎗️**:
+   * **The Gentle Leash:** It shrinks all the weights of the curve closer to zero, but doesn't make any of them exactly zero. It dampens the wild swings and makes the curve nice and smooth.
+2. **Lasso Regression (L1 Penalty) 🪓**:
+   * **The Strict Leash:** It is very strict and shrinks some weights to **exactly zero**! This means it completely throws away clues it thinks are useless, helping the robot focus only on the most important details.
+
+## 🔌 Step 1: Import our Tools & Load the Clean Data
+
+Let's import our favorite libraries and load the same preprocessed house dataset `kc_house_preprocessed.csv`.
+<img width="735" height="813" alt="ridge " src="https://github.com/user-attachments/assets/5c0592f9-9ab3-4d3a-9c27-e743bab8b423" />  
+
+## 🤖 Step 2: The Wild Robot (No Leash / Overfitting)
+
+Let's see what happens when we train a Degree 6 Polynomial model without any regularization. The robot has absolute freedom to bend the line as much as it wants.
+<img width="937" height="496" alt="ridge 2" src="https://github.com/user-attachments/assets/53f53d7e-5e30-4ef2-b716-6df46ff95beb" />  
+
+## 🎗️ Step 3: The Gentle Leash (Ridge Regularization)
+
+Now let's apply the **Ridge leash** (L2) to our Degree 6 Polynomial. This leash gently shrinks all the curve weights to make the curve smoother.
+<img width="967" height="549" alt="ridge 3" src="https://github.com/user-attachments/assets/43dc9ee2-d569-4b7f-aa6e-28692abad920" />  
+
+## 🪓 Step 4: The Strict Leash (Lasso Regularization)
+
+Let's see the **Lasso leash** (L1) in action. Lasso will try to throw away useless polynomial terms by setting their weights to exactly zero.
+<img width="892" height="556" alt="ridge 4" src="https://github.com/user-attachments/assets/e2b2943b-f092-4eb5-921a-581901947884" />  
+
+## 🎨 Step 5: Draw the Curves!
+
+Let's draw all the models on the same graph to see how the regularized leashes (Ridge and Lasso) keep the line from going wild compared to the unregularized model!
+<img width="1070" height="832" alt="ridge 5" src="https://github.com/user-attachments/assets/c8dae26c-ab9a-4c6d-8b20-1d841ae931d4" />  
+
+## Day 17
+## 16 July 2026
+
+
+
+
+
+
 
 
 
