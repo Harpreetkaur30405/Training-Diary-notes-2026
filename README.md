@@ -1240,6 +1240,123 @@ Let's see the **Lasso leash** (L1) in action. Lasso will try to throw away usele
 Let's draw all the models on the same graph to see how the regularized leashes (Ridge and Lasso) keep the line from going wild compared to the unregularized model!
 <img width="1070" height="832" alt="ridge 5" src="https://github.com/user-attachments/assets/c8dae26c-ab9a-4c6d-8b20-1d841ae931d4" />  
 
+## Classification & Logistic Regression
+
+Unlike regression (where we predict continuous numbers, like house prices), classification is all about predicting **categories or labels**.
+
+We will use the famous **Titanic dataset** (`train.csv`) to learn about two major types of classification:
+1. **Binary Classification**: Predicting between exactly two outcomes (e.g., Did a passenger survive? Yes or No / 1 or 0).
+2. **Multiclass (Multilevel) Classification**: Predicting between three or more outcomes (e.g., What passenger class was someone in? Class 1, Class 2, or Class 3).
+
+
+## What is Classification?
+- **Binary Classification**: The target variable has only two possible values.
+  - *Example*: Email is Spam (1) or Not Spam (0).
+  - *Example*: Passenger Survived (1) or Did Not Survive (0).
+- **Multiclass Classification**: The target variable has three or more possible values.
+  - *Example*: Predict weather (Sunny, Rainy, Cloudy, Snowy).
+  - *Example*: Predict Passenger Class (1st Class, 2nd Class, or 3rd Class).
+
+## Section 0: Imports & Setup
+
+Let's start by importing the necessary python libraries:
+- `pandas` and `numpy` for data manipulation.
+- `matplotlib` and `seaborn` for visualization.
+- `scikit-learn` for machine learning algorithms and evaluation metrics.
+<img width="1183" height="499" alt="logistic" src="https://github.com/user-attachments/assets/c19bfa65-e4fa-4f7f-9ddf-bec7a9c35218" />
+
+## Section 1: Load Data & Exploration
+
+We will load the Titanic dataset from `train.csv`. Let's inspect it to see what information we have about the passengers.
+<img width="1761" height="538" alt="logistic 2" src="https://github.com/user-attachments/assets/c7d0570b-5d6f-42f5-b78e-f1834180641b" />  
+
+### Preprocessing the Data
+
+Machine Learning algorithms require numbers to work, but our dataset has:
+1. **Missing values** (e.g., some ages are missing).
+2. **Categorical text values** (e.g., 'Sex' is 'male' or 'female').
+
+Let's clean this up in a very simple way:
+1. Fill missing values in `Age` with the median age.
+2. Fill missing values in `Embarked` with the most common value (mode).
+3. Convert the `Sex` column to a binary number (`1` for female, `0` for male) so the computer can understand it.
+<img width="621" height="717" alt="logistic 3" src="https://github.com/user-attachments/assets/b7526fc8-f988-4531-8230-c3efaaee9a81" />
+
+## Section 2: Binary Classification (Predicting Survival)
+
+In this section, we want to answer a binary question: **Did the passenger survive?**
+- **Target (y)**: `Survived` (1 = Yes, 0 = No)
+- **Features (X)**: `Age`, `Fare`, `SibSp` (siblings/spouses aboard), `Parch` (parents/children aboard), and `IsFemale` (gender).
+
+### Intuition: Logistic Regression & The Sigmoid Function
+How does Logistic Regression work?
+1. It calculates a weighted sum of features, just like Linear Regression.
+2. It passes this sum through a special function called the **Sigmoid Function**.
+3. The Sigmoid function squashes any number into a value between **0 and 1**. This value can be interpreted as a **probability** (e.g., "The passenger has an 80% chance of survival").
+4. If probability >= 0.5, we predict **Survived (1)**. If probability < 0.5, we predict **Not Survived (0)**.
+
+Let's visualize the Sigmoid function:
+<img width="850" height="756" alt="logistic 4" src="https://github.com/user-attachments/assets/136d5e25-b654-468f-b575-1d2c1aaedb4d" />  
+
+### Step 1: Split the Data
+We split our data into a **Training set** (to train our model) and a **Testing set** (to test how well it performs on unseen data).
+<img width="520" height="315" alt="logistic 5" src="https://github.com/user-attachments/assets/981b53d3-53cd-4104-89fb-9d49394f40dc" />  
+
+### Step 2: Train the Model
+Let's fit the `LogisticRegression` model on our training data.
+<img width="760" height="360" alt="split 2" src="https://github.com/user-attachments/assets/136cefdf-b1e1-4eac-8817-52834aa1bb1b" />  
+
+### Step 3: Make Predictions and Evaluate
+Now, let's predict the survival status for our testing set and evaluate how well our model did.
+
+We will look at:
+1. **Accuracy**: The percentage of passengers we correctly predicted.
+2. **Confusion Matrix**: A table showing correct predictions vs. incorrect predictions:
+   - **True Negatives (TN)**: Predicted Did Not Survive, actually Did Not Survive.
+   - **True Positives (TP)**: Predicted Survived, actually Survived.
+   - **False Positives (FP)**: Predicted Survived, actually Did Not Survive.
+   - **False Negatives (FN)**: Predicted Did Not Survive, actually Survived.
+3. **Classification Report**:
+   - **Precision**: Out of all predicted survived, how many actually survived?
+   - **Recall**: Out of all who actually survived, how many did we find?
+   - **F1-Score**: The balance between Precision and Recall.
+<img width="539" height="870" alt="step 3" src="https://github.com/user-attachments/assets/407018e6-5c6c-4a68-b09a-4a8baf9504e1" />  
+
+---
+## Section 3: Multiclass (Multilevel) Classification (Predicting Passenger Class)
+
+In this section, we transition to a multiclass problem: **What Passenger Class was the passenger in?**
+- **Target (y)**: `Pclass` (1 = 1st class [Upper], 2 = 2nd class [Middle], 3 = 3rd class [Lower])
+- **Features (X)**: `Survived`, `Age`, `Fare`, `SibSp`, `Parch`, `IsFemale`
+
+Since there are **three** classes here, it is a multiclass (multilevel) classification problem!
+
+### How does Logistic Regression handle Multiclass?
+By default, Logistic Regression is a binary classifier. However, it can solve multiclass problems using two common approaches:
+1. **One-vs-Rest (OvR) or One-vs-All**: The model trains a separate binary classifier for *each* class (e.g., Class 1 vs. Not Class 1, Class 2 vs. Not Class 2, and Class 3 vs. Not Class 3). The class with the highest probability is selected.
+2. **Multinomial (Softmax)**: The model predicts probabilities across all classes simultaneously using the Softmax function (a generalization of the Sigmoid function for multiple classes).
+<img width="1290" height="767" alt="section 3" src="https://github.com/user-attachments/assets/00689025-a2ea-480c-a92b-01fd363abca4" />  
+
+### Train the Multiclass Model
+We will set the `multi_class` parameter to `'multinomial'` (which uses the Softmax function) and train the model.
+<img width="843" height="314" alt="section 4" src="https://github.com/user-attachments/assets/d8bbb92b-0e41-4845-9821-5e39778f099f" />  
+
+### Evaluate the Multiclass Model
+Let's see how our model performs when classifying passengers into Class 1, 2, or 3.
+<img width="482" height="772" alt="multicast model" src="https://github.com/user-attachments/assets/b1c3b53b-ac86-422c-b1bd-8c9dae0936a3" />  
+
+## Section 4: Comparing Binary vs. Multiclass
+
+Let's recap the differences in a simple summary table:
+
+| Aspect | Binary Classification | Multiclass Classification |
+|---|---|---|
+| **Number of Classes** | Exactly 2 (e.g., 0 or 1, Yes or No) | 3 or more (e.g., 1, 2, 3) |
+| **Example in Notebook** | Predicting Survival (`Survived`) | Predicting Class (`Pclass`) |
+| **Underlying Function** | Sigmoid Function | Softmax Function (or One-vs-Rest) |
+| **Confusion Matrix Size** | $2 \times 2$ matrix | $N \times N$ matrix (where $N = $ number of classes) |
+| **Output Interpretation** | Probability of the positive class (e.g., 75% survival) | Probability distribution over all classes (e.g., 10% Class 1, 30% Class 2, 60% Class 3) |
+
 ## Day 17
 ## 16 July 2026
 
