@@ -1464,13 +1464,157 @@ Let's put the classifiers head-to-head on the test set.
 
 ## Day 18
 ## 17 July 2026
+# Day 16: Introduction to Clustering (Unsupervised Learning)
+## Project: Customer Segmentation for Retail Marketing — Mall Customers
 
+---
 
+Welcome to Day 16! Today, we are stepping into the world of **Unsupervised Learning**.
 
+Up until now, we have been working with supervised learning models (like Linear Regression, Logistic Regression, Decision Trees, and SVMs). In those models, we always had a "ground truth" target label ($y$) to predict. 
 
+In Unsupervised Learning, we have **no target labels ($y$)**. We just have data points, and our goal is to find natural groups, patterns, or structures within them.
 
+### Real-World Analogy 💡
+Imagine you have a jar full of coins from different countries. You don't know which country each coin belongs to, but you notice some are made of copper, some of silver, some are large, and some are small. 
 
+If you group them by:
+1. **Size**
+2. **Color/Material**
+3. **Weight**
 
+You will naturally group all the US pennies together, all the euro cents together, and all the quarters together. Even without labels (without anyone telling you which coin is which), you grouped them based on similarities. **That is clustering!**
+
+---
+
+### What We Will Cover Today:
+1. **Supervised vs. Unsupervised Learning** — What is the key difference?
+2. **The K-Means Clustering Algorithm** — How does it work step-by-step?
+3. **Exploring the Mall Customers Dataset** — Loading and checking our retail data.
+4. **Feature Scaling** — Why scaling is critical for distance-based models.
+5. **Building the K-Means Model** — Fitting K-Means on our scaled data.
+6. **Visualizing & Interpreting Clusters** — Drawing and understanding our customer segments.
+7. **The Elbow Method** — How to mathematically find the optimal number of groups.
+
+## Step 1: Loading the Tools (Libraries)
+
+First, we need to import the Python libraries we will use:
+- **Pandas**: For reading and examining our dataset.
+- **Numpy**: For mathematical operations.
+- **Matplotlib & Seaborn**: For plotting beautiful charts.
+- **Scikit-Learn (sklearn)**: To perform standard scaling and run the K-Means clustering algorithm.
+<img width="759" height="513" alt="step 1" src="https://github.com/user-attachments/assets/2fec6f95-8182-4dbf-a907-dea0786c340b" />
+
+## Step 2: Loading the Mall Customers Dataset
+
+We will use the `Mall_Customers.csv` dataset. This dataset contains basic information about 200 mall customers:
+- **CustomerID**: A unique ID for each customer (we won't use this for clustering).
+- **Gender**: Male or Female.
+- **Age**: The customer's age in years.
+- **Annual Income (k$)**: The customer's annual income in thousands of dollars.
+- **Spending Score (1-100)**: A score assigned by the mall based on customer behavior and purchasing patterns (1 = very low spender, 100 = very high spender).
+
+Let's read this file using Pandas and print its first 5 rows to see what it looks like.
+<img width="755" height="469" alt="step 2" src="https://github.com/user-attachments/assets/8126f701-2d19-41dc-b28a-6fbebca6ffb3" />  
+
+## Step 3: Getting to Know Our Data (Exploratory Data Analysis)
+
+Before building any Machine Learning model, we must explore the data to understand its shape, check for missing values, and look at general statistics.
+<img width="623" height="721" alt="step 3" src="https://github.com/user-attachments/assets/a3000576-e120-4e35-9a42-efdfb44ec3c0" />  
+
+### Check for Missing Values & Visualizing the Raw Data
+
+Let's verify if there are any missing values that we need to clean. Then, we will create a scatter plot of **Annual Income** vs. **Spending Score**. This plot will show us how our customers are naturally distributed.
+<img width="533" height="797" alt="jpg" src="https://github.com/user-attachments/assets/67a71906-0d90-4f4d-ac51-fadd0dd90ab6" />  
+
+### What does the raw scatter plot show us? 🔍
+
+Looking closely at the plot, we can see that the points form some visual clusters! 
+- In the **bottom-left**: Low income, low spending.
+- In the **top-left**: Low income, high spending.
+- In the **center**: Average income, average spending.
+- In the **bottom-right**: High income, low spending.
+- In the **top-right**: High income, high spending.
+
+This visual inspection suggests that grouping our customers into **5 clusters ($K = 5$)** makes a lot of sense. Let's see if our clustering algorithm finds exactly these groups!
+
+## Step 4: Preparing the Features & Scaling
+
+To cluster our customers, we will use two primary features:
+1. `Annual Income (k$)`
+2. `Spending Score (1-100)`
+
+### Why do we need Feature Scaling? ⚖️
+K-Means groups data points by calculating the straight-line (Euclidean) distance between them: 
+$$d(p, q) = \sqrt{(p_1 - q_1)^2 + (p_2 - q_2)^2}$$
+
+If one feature has values between 1 and 100 (like Spending Score) and another has values in a much larger range, the larger feature will dominate the distance calculations. 
+
+By scaling the features using `StandardScaler`, we transform the data so that both features have a **mean of 0** and a **standard deviation of 1**. This ensures they contribute equally to the distance measurements.
+<img width="509" height="489" alt="step " src="https://github.com/user-attachments/assets/820662a3-5c89-450e-801f-cb23060f1073" />  
+
+## Step 5: How K-Means Works Step-by-Step 🚶‍♂️
+
+Before we run the code, let's understand the simple story of K-Means:
+1. **Choose K**: Decide how many groups you want (we choose $K=5$).
+2. **Place Centroids**: The algorithm places 5 starting "anchors" (called **centroids**) at random positions.
+3. **Assign Points**: Every customer point is assigned to its nearest centroid.
+4. **Update Centroids**: Each centroid moves to the exact center (average location) of all the points assigned to it.
+5. **Repeat**: Repeat steps 3 and 4 until the centroids stop shifting. At this point, the algorithm has **converged**!
+
+Let's initialize and run our K-Means model with **$K=5$** clusters.
+<img width="1011" height="548" alt="image 1" src="https://github.com/user-attachments/assets/b3757408-7267-4658-baf2-a60a07452c55" />  
+
+## Step 6: Visualizing the Final Clusters 🎨
+
+To see the clusters clearly, we want to plot them on a scatter plot, using a different color for each cluster. We also want to plot the **centroids** (centers of each cluster).
+
+Since we scaled our features, the centroids are currently in scaled coordinates. We can use `scaler.inverse_transform()` to convert them back to the original values (Income and Spending Score) so they are easy to read!
+<img width="666" height="799" alt="image 6" src="https://github.com/user-attachments/assets/0384c4c5-8aae-42a7-8dd9-f1a55bf63676" />  
+
+## Step 7: Interpreting the Customer Segments 📊
+
+Now comes the most important part of Unsupervised Learning: **understanding what our clusters mean**. If you were a marketer at the mall, how would you treat these groups?
+
+Looking at the scatter plot, we can describe the 5 segments:
+
+1. **High Income, High Spending (Cluster Target)**:
+   - *Premium Shoppers*: High earners who love to spend. These are the goldmine for the mall. Target them with luxury offers, VIP events, and premium loyalty programs!
+2. **High Income, Low Spending (Cluster Careful)**:
+   - *Conservative Spenders*: They have high earning power but spend conservatively. They might need targeted sales or value propositions to encourage them to buy.
+3. **Average Income, Average Spending (Cluster Standard)**:
+   - *Moderate Spenders*: Middle class in both income and spending. They represent a steady, predictable customer base.
+4. **Low Income, High Spending (Cluster Careless)**:
+   - *Impulsive Buyers*: They don't earn much but spend a lot. They might respond well to promotional discounts and eye-catching product displays.
+5. **Low Income, Low Spending (Cluster Frugal)**:
+   - *Budget Shoppers*: Earn less and spend less. Highly price-sensitive and budget-conscious. Focus on cost-saving product lines for this segment.
+
+## Step 8: How do we choose K? The Elbow Method 📐
+
+In this project, we chose $K=5$ because we could easily plot the data in 2D and see the 5 groups.
+But what if we clustered using 10 features? We wouldn't be able to plot in 10 dimensions to see the groups. How do we choose $K$ mathematically?
+
+We use the **Elbow Method**:
+- We run K-Means multiple times, changing $K$ from 1 to 10.
+- For each $K$, we calculate **Inertia** (Within-Cluster Sum of Squares). Inertia measures how far away data points are from their nearest centroid.
+- *Analogy*: Think of Inertia as the "total walking distance" for customers to their closest coffee shop. As you open more shops (larger $K$), the total walking distance (Inertia) will decrease.
+- We plot Inertia vs. $K$. The plot looks like a bent arm. The **"elbow"** point is where the inertia stops dropping quickly. That point represents the optimal number of clusters!
+<img width="1303" height="779" alt="image 3" src="https://github.com/user-attachments/assets/6caa149f-40d5-4bd2-bea0-ed11bd4d41d5" />
+
+### Interpreting the Elbow Plot 🔍
+
+Looking at the chart:
+- From $K=1$ to $K=5$, the Inertia drops very sharply (the walking distance decreases significantly as we add more coffee shops).
+- After $K=5$, the line becomes flatter (adding more shops doesn't decrease walking distance by much, and is not worth the extra complexity/cost).
+- The "elbow" is clearly at **$K=5$**, confirming that 5 is the mathematically optimal number of clusters.
+
+---
+
+## Summary & Key Takeaways 📝
+1. **Unsupervised Learning** is used when there are no target labels. We discover patterns without supervision.
+2. **Clustering** groups similar data points together. K-Means is a centroid-based clustering algorithm.
+3. **Feature Scaling** is essential because K-Means computes distances, and different scales will distort the clusters.
+4. **The Elbow Method** helps identify the optimal number of clusters by tracking **Inertia** (Within-Cluster Sum of Squares) across different $K$ values.
 
 
 
