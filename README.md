@@ -1359,6 +1359,121 @@ Let's recap the differences in a simple summary table:
 
 ## Day 17
 ## 16 July 2026
+# Day 15: Decision Trees & Random Forests
+## Project: Titanic Passenger Survival Prediction (continued)
+
+### What We Will Cover Today (2-Hour Class)
+
+| Block | Time | Topic |
+|---|---|---|
+| 1 | 0:00 – 0:20 | Tree-based models intuition — splitting and Gini impurity |
+| 2 | 0:20 – 0:40 | Fitting Decision Trees & Visualizing Tree Splits |
+| 3 | 0:40 – 1:05 | Regularizing Trees — tuning `max_depth` and leaf size |
+| 4 | 1:05 – 1:30 | Ensemble learning intuition & Random Forests |
+| 5 | 1:30 – 1:45 | Feature Importance — tree-based vs. logistic regression |
+| 6 | 1:45 – 2:00 | Grand Classifier Comparison & Exercises |
+
+---
+
+### Why Tree-Based Models?
+
+In Day 14, we used **Logistic Regression** for classification. While fast and interpretable, it assumes a **linear relationship** in the log-odds space. 
+
+**Decision Trees** and **Random Forests** make no such assumptions. They split the data recursively based on feature thresholds: *"Is Age <= 6.5?"* → *"Is IsFemale <= 0.5?"*. 
+
+| Property | Logistic Regression | Decision Trees / Random Forests |
+|---|---|---|
+| **Linearity** | Assumes linear boundary | Non-linear boundaries natively |
+| **Scaling** | Sensitive to feature scaling | Scaling-invariant (splits don't care about units) |
+| **Interactions** | Must engineer interaction terms | Captures feature interactions automatically |
+| **Interpretability** | Coefs show log-odds impact | Highly visual (trees); feature importance (forests) |
+
+Today, we will apply these models to classify Titanic passengers into **Survived** (1) or **Did Not Survive** (0).
+
+## Section 0: Imports & Setup
+<img width="639" height="498" alt="section 0" src="https://github.com/user-attachments/assets/e9086051-82ad-4c39-acfd-54f87111bb26" />  
+
+## Section 1: Load Data & Preprocessing
+
+We load the Titanic dataset from `train.csv` and apply the same simple preprocessing we learned in Day 14:
+1. Fill missing `Age` values with the median age.
+2. Fill missing `Embarked` values with the most common port (mode).
+3. Convert the `Sex` column to a binary number `IsFemale` (1 for female, 0 for male).
+<img width="727" height="516" alt="section 1" src="https://github.com/user-attachments/assets/8a06555a-41b3-40ef-8f9a-3e7a17fee0ce" />
+
+## Section 2: How Decision Trees Split Data
+
+A decision tree finds splits that maximize the **homogeneity** (purity) of the resulting child nodes. The default measure is **Gini Impurity**:
+```
+Gini = 1 − Σ (p_i)²
+```
+Where `p_i` is the probability of class `i` in the node. 
+For binary classification (survived vs. did not survive):
+- **Gini = 0** → Perfect purity (all samples belong to a single class, either everyone survived or everyone died).
+- **Gini = 0.5** → Maximum impurity (exactly 50% survived and 50% died).
+
+At each step, the tree searches over all features and split points to find the partition that yields the **largest decrease in Gini Impurity** (Information Gain).
+
+## Section 3: Training an Unconstrained Decision Tree
+
+Let's train a Decision Tree without limiting its growth (`max_depth=None`) and observe its performance.
+<img width="757" height="516" alt="section 3" src="https://github.com/user-attachments/assets/a4b2ea1e-2536-4349-88fd-8204ab644d8a" />  
+
+## Section 4: Visualizing Shallow Decision Trees
+
+By limiting the tree's growth (`max_depth=3`), we can plot and inspect the splitting decisions.
+<img width="902" height="875" alt="section 4" src="https://github.com/user-attachments/assets/d7d4d5db-327d-47e7-9f7b-75c047914a7a" />  
+
+---
+## Section 5: Regularization — Tuning Tree Hyperparameters
+
+To solve the overfitting problem, we must regularize the tree by limiting its growth. The primary hyperparameters are:
+- **`max_depth`**: Max length of path from root to leaf.
+- **`min_samples_split`**: Minimum training samples required to split a node.
+- **`min_samples_leaf`**: Minimum training samples required to be in a leaf node.
+
+Let's sweep `max_depth` to locate the optimal bias-variance trade-off.
+<img width="602" height="895" alt="section 5" src="https://github.com/user-attachments/assets/17002e3d-44ca-4aaa-8451-b282b33de2ae" />  
+
+## Section 6: Ensemble Methods — Random Forests
+
+A single decision tree has high variance (prone to overfitting). **Random Forests** resolve this by building an ensemble of trees and averaging their predictions (bagging).
+
+### The Recipe of a Random Forest:
+1. **Bootstrap Aggregation (Bagging)**: Each tree is trained on a random sample of the training dataset selected with replacement.
+2. **Feature Subspace Sampling**: At each split, only a random subset of features is considered (e.g., `sqrt(n_features)`). This decorrelates the trees, making their collective vote more stable.
+3. **Voting**: The forest outputs the class that receives the majority of votes from the individual trees.
+
+## Section 7: Fitting a Random Forest Classifier
+
+We train a `RandomForestClassifier` with 100 trees and limit `max_depth` to prevent overfitting.
+<img width="375" height="854" alt="section 7" src="https://github.com/user-attachments/assets/fea4ec04-a92d-466f-8df4-90f301924b15" />  
+
+---
+## Section 8: Feature Importance — Trees vs. Logistic Regression
+
+Decision Trees and Random Forests estimate feature importance based on **Gini Importance** (Mean Decrease in Impurity). It tracks how much a feature's splits reduce node impurity across the entire ensemble.
+
+Let's plot and compare the Random Forest feature importances with Logistic Regression coefficients from Day 14.
+<img width="932" height="804" alt="section 8" src="https://github.com/user-attachments/assets/7ee1c9ab-ae37-4cf1-8b2f-f721238ecb2e" />  
+
+## Section 9: Grand Classifier Comparison
+
+Let's put the classifiers head-to-head on the test set.
+<img width="542" height="884" alt="section 9" src="https://github.com/user-attachments/assets/8bf08df0-626b-47b4-a87a-41e199722cd1" />  
+
+## Day 18
+## 17 July 2026
+
+
+
+
+
+
+
+
+
+
 
 
 
