@@ -1176,12 +1176,14 @@ Let's import our favorite libraries and load the same preprocessed house dataset
 
 ## 🤖 Step 2: Train the Bendy Line Robot (Polynomial Regression)
 
-We will train a Polynomial Regression model of Degree 2. This creates a squared feature ($Size^2$) which lets the robot bend the line to capture the curve.
+We will train a Polynomial Regression model of Degree 2. This creates a squared feature ($Size^2$) which lets the robot bend the line to capture the curve.  
+
 <img width="564" height="188" alt="step 2 polynomial" src="https://github.com/user-attachments/assets/72d6b3a0-5b78-4248-9435-fc451a5d18e6" />  
 
 ## 📈 Step 3: Measure the Robot's Performance
 
-Let's see how well our robot predicts house prices on the test data by calculating the MAE (Average Miss) and Accuracy ($R^2$ Score).
+Let's see how well our robot predicts house prices on the test data by calculating the MAE (Average Miss) and Accuracy ($R^2$ Score).  
+
 <img width="407" height="433" alt="step 3 pl" src="https://github.com/user-attachments/assets/8d3ff4b0-dd0a-463f-8356-dba516cb0c0c" />  
 
 --- 
@@ -1359,7 +1361,7 @@ Let's recap the differences in a simple summary table:
 
 ## Day 17
 ## 16 July 2026
-# Day 15: Decision Trees & Random Forests
+# Decision Trees & Random Forests
 ## Project: Titanic Passenger Survival Prediction (continued)
 
 ### What We Will Cover Today (2-Hour Class)
@@ -1377,7 +1379,6 @@ Let's recap the differences in a simple summary table:
 
 ### Why Tree-Based Models?
 
-In Day 14, we used **Logistic Regression** for classification. While fast and interpretable, it assumes a **linear relationship** in the log-odds space. 
 
 **Decision Trees** and **Random Forests** make no such assumptions. They split the data recursively based on feature thresholds: *"Is Age <= 6.5?"* → *"Is IsFemale <= 0.5?"*. 
 
@@ -1464,14 +1465,8 @@ Let's put the classifiers head-to-head on the test set.
 
 ## Day 18
 ## 17 July 2026
-# Day 16: Introduction to Clustering (Unsupervised Learning)
+# Introduction to Clustering (Unsupervised Learning)
 ## Project: Customer Segmentation for Retail Marketing — Mall Customers
-
----
-
-Welcome to Day 16! Today, we are stepping into the world of **Unsupervised Learning**.
-
-Up until now, we have been working with supervised learning models (like Linear Regression, Logistic Regression, Decision Trees, and SVMs). In those models, we always had a "ground truth" target label ($y$) to predict. 
 
 In Unsupervised Learning, we have **no target labels ($y$)**. We just have data points, and our goal is to find natural groups, patterns, or structures within them.
 
@@ -1569,7 +1564,8 @@ Let's initialize and run our K-Means model with **$K=5$** clusters.
 
 To see the clusters clearly, we want to plot them on a scatter plot, using a different color for each cluster. We also want to plot the **centroids** (centers of each cluster).
 
-Since we scaled our features, the centroids are currently in scaled coordinates. We can use `scaler.inverse_transform()` to convert them back to the original values (Income and Spending Score) so they are easy to read!
+Since we scaled our features, the centroids are currently in scaled coordinates. We can use `scaler.inverse_transform()` to convert them back to the original values (Income and Spending Score) so they are easy to read!  
+
 <img width="666" height="799" alt="image 6" src="https://github.com/user-attachments/assets/0384c4c5-8aae-42a7-8dd9-f1a55bf63676" />  
 
 ## Step 7: Interpreting the Customer Segments 📊
@@ -1615,6 +1611,459 @@ Looking at the chart:
 2. **Clustering** groups similar data points together. K-Means is a centroid-based clustering algorithm.
 3. **Feature Scaling** is essential because K-Means computes distances, and different scales will distort the clusters.
 4. **The Elbow Method** helps identify the optimal number of clusters by tracking **Inertia** (Within-Cluster Sum of Squares) across different $K$ values.
+
+## Day 19
+## 20 July 2026
+# Introduction to Exploratory Data Analysis using Python
+
+## 1. Introduction  
+Exploratory Data Analysis (EDA) is the process of analyzing and understanding a dataset using statistical techniques and visualizations. It helps to identify patterns, relationships, trends, missing values, and outliers in the data before applying machine learning algorithms.  
+
+EDA is an important step in Data Science and Machine Learning because it helps us understand the quality and structure of data.  
+
+## 2. Objectives of EDA
+1. To understand the structure and properties of a dataset.  
+2. To identify missing and duplicate values.  
+3. To detect outliers and unusual observations.  
+4. To understand relationships between variables.  
+5. To find patterns and trends in data.  
+6. To prepare clean data for machine learning models.  
+
+## 3. Steps Involved in EDA   
+1. **Data Collection**: Collect data from CSV files, Excel files, databases, or other sources.  
+
+2. **Data Loading**: Load the dataset using Python libraries such as Pandas.  
+
+3. **Data Inspection**: Check the number of rows, columns, data types, and basic information.  
+
+4. **Data Cleaning**: Handle missing values, duplicate records, and incorrect data.  
+
+5. **Statistical Analysis**: Calculate mean, median, mode, standard deviation, minimum, and maximum values.  
+
+6. **Data Visualization**: Use graphs and charts to understand data patterns.  
+
+7. **Correlation Analysis**: Identify relationships between numerical variables.  
+
+## 4. Important Python Libraries for EDA  
+| Library |	Purpose |
+|---------|---------|
+|  Pandas |	Data manipulation and analysis |
+| NumPy   |	Numerical calculations |
+| Matplotlib |	Data visualization |
+| Seaborn |	Statistical visualization |
+
+## 5. Important EDA Functions  
+| Function |	Description |
+|----------|--------------|
+| head()   |	Displays first five rows |
+| tail()	 | Displays last five rows |
+| shape	   | Shows rows and columns |
+| info()	 | Displays dataset information |
+| describe() |	Shows statistical summary |
+| isnull().sum() |	Counts missing values |
+| duplicated().sum() |	Counts duplicate rows |
+| value_counts() |	Counts unique values |
+| corr() |	Calculates correlation |
+| drop_duplicates() |	Removes duplicate rows |
+| fillna() |	Fills missing values |
+
+## 6. Types of Exploratory Data Analysis  
+1. **Univariate Analysis** 
+
+It involves analyzing a single variable to understand its distribution and characteristics.  
+
+Examples:  
+- Histogram  
+- Box plot  
+- Count plot
+
+2. **Bivariate Analysis** 
+
+It involves analyzing two variables to identify relationships between them.  
+
+Examples:  
+- Scatter plot  
+- Bar plot  
+- Correlation between two variables  
+
+3. **Multivariate Analysis**  
+
+It involves analyzing three or more variables together to understand complex relationships.  
+
+Examples:  
+- Heatmap  
+- Pair plot  
+- Multiple-variable comparison  
+
+## 7. Data Visualization Techniques  
+a) **Histogram**  
+Shows the frequency distribution of numerical data.  
+
+b) **Box Plot**  
+Helps identify outliers, median, and data spread.  
+
+c) **Scatter Plot**  
+Shows the relationship between two numerical variables.  
+
+d) **Heatmap**  
+Represents correlations between numerical variables using colours.  
+
+e) **Bar Chart**  
+Compares values across different categories.  
+
+## 8. Handling Missing Values  
+Missing values are data entries that are not available in a dataset.  
+
+Common methods:  
+- dropna() – Removes rows containing missing values.  
+- fillna() – Replaces missing values with suitable values.    
+- Mean – Fills missing numerical values with the average.  
+- Median – Fills missing values with the middle value.  
+- Mode – Fills missing categorical values with the most frequent value.  
+
+## 9. Outlier Detection  
+Outliers are observations that are significantly different from other values in a dataset.  
+The Interquartile Range (IQR) method is commonly used to detect outliers.  
+IQR=Q3-Q1  
+
+- Lower Limit = Q1 − 1.5 × IQR  
+- Upper Limit = Q3 + 1.5 × IQR  
+Values outside these limits are considered potential outliers.  
+
+## 10. Correlation Analysis  
+Correlation measures the strength and direction of the relationship between two numerical variables.  
+
+Its value ranges from -1 to +1.  
+- +1: Perfect positive correlation.  
+- -1: Perfect negative correlation.  
+- 0: No linear correlation.  
+
+## Day 20
+## 21 July 2026  
+
+## 11. Applications of EDA  
+1. Customer behaviour analysis.  
+2. Sales and business forecasting.  
+3. Healthcare data analysis.  
+4. Fraud detection.  
+5. Student performance analysis.  
+6. Machine learning data preparation.  
+
+## 12. Python Implementation of Exploratory Data Analysis  
+**Aim**: To perform Exploratory Data Analysis on a dataset using Python libraries such as Pandas, NumPy, Matplotlib, and Seaborn.  
+
+### Program:  
+The following program creates a student performance dataset and performs data inspection, cleaning, statistical analysis, outlier detection, correlation analysis, and visualization.  
+<img width="220" height="384" alt="eda " src="https://github.com/user-attachments/assets/738fde53-66b3-4c15-8db2-ddaa531a0ef8" />  
+
+<img width="190" height="401" alt="image" src="https://github.com/user-attachments/assets/0a72f043-ef58-481f-a289-0d62202a67c7" />  
+
+### Output:  
+<img width="197" height="336" alt="image" src="https://github.com/user-attachments/assets/4c3ba5d2-7515-4b84-8302-7c864c7f2975" />  
+
+<img width="257" height="303" alt="image" src="https://github.com/user-attachments/assets/b8d7b963-d5d7-4dd0-8ffb-d0d89b6c38c2" />  
+
+<img width="248" height="346" alt="image" src="https://github.com/user-attachments/assets/e0e2d5ab-82a1-42c5-b311-27ee950488f3" />  
+
+<img width="257" height="378" alt="image" src="https://github.com/user-attachments/assets/2abe0b98-f20a-4fb3-8334-b2595820b455" />  
+
+<img width="192" height="78" alt="image" src="https://github.com/user-attachments/assets/29eac238-08c5-4d14-8075-ab9ecc84132b" />  
+
+## 13. Important Observations  
+1. The dataset contains student details such as age, marks, attendance, and department.  
+2. Missing values are identified and replaced with the mean.  
+3. Duplicate records are detected and removed.  
+4. Statistical functions provide information about the dataset.  
+5. Visualizations help identify patterns and relationships.  
+6. Correlation analysis shows the relationship between marks and attendance.  
+
+## 14. Advantages of EDA  
+- Improves data understanding.  
+- Helps in detecting errors and missing values.  
+- Identifies important patterns and trends.  
+- Makes data visualization easier.  
+- Improves machine learning model preparation.  
+
+## 15. Conclusion  
+Exploratory Data Analysis was successfully performed using Python. Different statistical methods and visualization techniques were used to understand the dataset, identify missing values, remove duplicates, detect potential outliers, and analyze relationships between variables. EDA helps prepare high-quality data for further machine learning tasks.  
+
+## Day 21
+## 22 July 2026  
+# Model Training in Machine Learning Using Python  
+
+## 1. Introduction  
+Model Training is the process of teaching a Machine Learning model to learn patterns and relationships from a given dataset. During training, the model uses input data to make predictions and adjusts its internal parameters to reduce errors.  
+The main goal of model training is to develop a model that can make accurate predictions on new and unseen data.  
+
+**Example**: If we provide a model with students' study hours and their marks, it can learn the relationship between study hours and marks and predict the marks of a new student.  
+
+## 2. Objectives of Model Training  
+1. To understand the working of machine learning models.  
+2. To train models using available datasets.  
+3. To learn patterns from training data.  
+4. To make predictions on new data.  
+5. To evaluate model performance.  
+6. To improve prediction accuracy.  
+
+## 3. Steps Involved in Model Training  
+**1. Data Collection**  
+Collect the required dataset.  
+
+**2. Data Preprocessing**  
+Clean and prepare the data.  
+
+**3. Data Splitting**  
+Divide data into training and testing sets.  
+
+**4. Model Selection**  
+Choose a suitable ML algorithm.  
+
+**5. Model Training**  
+Train the model using training data.  
+
+**6. Model Evaluation**  
+Check model performance on test data.  
+
+**7. Prediction**  
+Use the trained model for new data.  
+
+## 4. Important Concepts of Model Training  
+**A. Training Dataset**  
+The portion of data used to teach the machine learning model. The model learns patterns from this data.  
+**B. Testing Dataset**  
+The portion of data used to check how accurately the trained model performs on unseen data.  
+**C. Validation Dataset**  
+It is used to tune model settings and select the best model before final testing.  
+**D. Model Selection**  
+Choosing the appropriate algorithm according to the problem.  
+
+Examples:   
+- Linear Regression  
+- Logistic Regression  
+- Decision Tree  
+- Random Forest  
+- Support Vector Machine (SVM)  
+- K-Nearest Neighbors (KNN)  
+**E. Model Fitting**  
+The process of training the model using the fit() function.  
+**F. Model Prediction**  
+The process of predicting output using the trained model through the predict() function.  
+
+## 5. Types of Machine Learning Models  
+|Type |	Description |	Example |
+|-----|-------------|---------|
+| Supervised Learning |	Learns from labelled data | Linear Regression |
+| Unsupervised Learning |	Finds patterns in unlabelled data |	K-Means |
+| Reinforcement Learning |	Learns through rewards and penalties |	Game-playing AI |
+
+## 6. Train-Test Split  
+Train-test split divides the dataset into two parts.  
+- Training data: Used to train the model.  
+- Testing data: Used to evaluate the model.  
+A common ratio is:  
+- 80% Training Data  
+- 20% Testing Data  
+Python function:  
+train_test_split()  
+
+## 7. Important Python Libraries  
+|Library|	Purpose|
+|-------|--------|
+| Pandas |	Data handling |
+| NumPy |	Numerical operations |
+| Scikit-learn |	Model training and evaluation |
+| Matplotlib |	Graph visualization |
+| Seaborn |	Statistical visualization |
+
+## 8. Model Evaluation Techniques  
+Model evaluation helps measure how well a machine learning model performs.  
+
+**For Regression Models:**  
+**1. MAE (Mean Absolute Error):** Measures the average absolute difference between actual and predicted values.  
+**2. MSE (Mean Squared Error):** Calculates the average squared prediction error.  
+**3. RMSE (Root Mean Squared Error):** Represents the square root of MSE.  
+**4. R² Score:** Measures how well the model explains variations in the target variable. A score closer to 1 generally indicates a better fit.  
+**For Classification Models:**  
+**1.** Accuracy  
+**2.** Precision  
+**3.** Recall  
+**4.** F1-Score  
+**5.** Confusion Matrix  
+
+## 9. Overfitting and Underfitting  
+**Overfitting:** When a model learns the training data too closely, including noise, and performs poorly on unseen data.  
+**Underfitting:**  When a model fails to learn important patterns from the training data.  
+
+## 10. Important Terms in Model Training  
+- Epoch: One complete pass through the entire training dataset.  
+- Batch Size: Number of training samples processed at one time.  
+- Learning Rate: Controls how much the model updates its parameters during training.  
+- Loss Function: Measures the difference between actual and predicted outputs.  
+- Optimizer: Updates model parameters to minimize the loss.  
+- Hyperparameters: Settings that control the model training process.  
+
+## Day 22  
+## 23 July 2026  
+
+## 11. Applications of Model Training  
+**1.** House price prediction.  
+**2.** Student performance prediction.  
+**3.** Weather forecasting.  
+**4.** Disease prediction.  
+**5.** Fraud detection.  
+**6.** Image and speech recognition.  
+**7.** Recommendation systems.  
+
+## 12. Python Implementation of Model Training  
+**Aim:** To implement a Machine Learning model using Python and train it using a dataset.  
+**Algorithm Used:** Linear Regression  
+**Problem:** Predict student marks based on the number of study hours.  
+
+## Code:  
+<img width="194" height="326" alt="image" src="https://github.com/user-attachments/assets/2c8be46d-7427-4bd8-ad1f-f3f96fc7d0d4" />  
+
+<img width="167" height="209" alt="image" src="https://github.com/user-attachments/assets/284822a9-823e-454c-9729-54bc373393ed" />  
+
+## Output:  
+<img width="231" height="373" alt="image" src="https://github.com/user-attachments/assets/b15dc693-c9e5-462f-999d-5cbe01898f35" />  
+
+## 13. Advantages of Model Training  
+**1.** Helps machines learn from historical data.  
+**2.** Makes predictions on new data.  
+**3.** Automates decision-making processes.  
+**4.** Improves performance through training.  
+**5.** Supports data-driven decisions.  
+
+## 14. Conclusion  
+Machine Learning Model Training was successfully implemented using Python. A Linear Regression model was trained using student study hours and marks. The model was evaluated using different performance metrics and used to predict marks for new input data.  
+
+## Day 23
+## 24 July 2026  
+# Customer Churn Prediction Using Machine Learning  
+
+## 1. Introduction  
+Customer Churn Prediction is a Machine Learning technique used to predict whether a customer will stop using a company's products or services.  
+Churn means when a customer leaves a company or cancels their subscription.  
+It helps businesses identify customers who may leave and take steps to retain them.  
+**Example:** A telecom company uses customer data such as monthly bills, contract type, internet services, and tenure to predict whether a customer will discontinue their connection.  
+
+## 2. Objectives  
+**1.** To understand customer behaviour.  
+**2.** To identify customers who may leave a company.  
+**3.** To analyze customer information and usage patterns.  
+**4.** To build a Machine Learning model for churn prediction.  
+**5.** To improve customer retention.  
+**6.** To help businesses make better decisions.  
+
+## 3. Working of Customer Churn Prediction  
+**1. Customer Data Collection**  
+Collect customer details and service information.  
+
+**2. Data Preprocessing**  
+Clean missing values and encode categorical data.  
+
+**3. Data Splitting**  
+Divide data into training and testing sets.  
+
+**4. Model Training**  
+Train a classification algorithm.  
+
+**5. Model Evaluation**  
+Check accuracy and other performance metrics.  
+
+**6. Churn Prediction**  
+Predict whether a customer will leave or stay.  
+
+## 4. Important Features Used  
+|Feature|	Description |
+|-------|-------------|
+| Customer ID |	Unique customer identification |
+| Gender |	Customer gender |
+| Tenure |	Duration of service usage |
+| Monthly Charges |	Monthly payment |
+| Total Charges |	Total amount paid |
+| Contract |	Type of subscription |
+| Internet Service |	Type of internet connection |
+| Payment Method |	Method of payment |
+| Churn |	Whether customer leaves or stays |
+
+
+## 5. Types of Customer Churn  
+**1. Voluntary Churn:** When customers willingly cancel their services.  
+**2. Involuntary Churn:** When customers leave due to reasons such as payment failure or service disconnection.  
+
+## 6. Machine Learning Algorithm Used  
+Customer churn prediction is a classification problem because the output contains two categories:  
+- 0 = Customer will stay.  
+- 1 = Customer will leave.  
+Common algorithms include:  
+- Logistic Regression  
+- Decision Tree  
+- Random Forest  
+- K-Nearest Neighbors (KNN)  
+- Support Vector Machine (SVM)
+
+It predicts the probability of a customer leaving based on the given input features.  
+
+## 7. Dataset Description  
+For this practical, we use a sample Telecom Customer dataset.  
+The dataset contains information about customers, their subscription plans, monthly charges, and churn status.  
+The target variable is **Churn**:  
+- No (0): Customer stays with the company.  
+- Yes (1): Customer leaves the company.  
+
+## 8. Data Preprocessing  
+Data preprocessing is required to prepare customer data for machine learning.  
+
+The following operations are performed:  
+**1.** Handle missing values.  
+**2.** Remove duplicate records.  
+**3.** Convert categorical values into numerical form using One-Hot Encoding.  
+**4.** Separate input features and target variable.  
+**5.** Split data into training and testing sets.  
+**6.** Scale numerical features where required.  
+
+## 9. Model Evaluation Metrics  
+|Metric|	Description |
+|------|--------------|
+| Accuracy |	Overall correct predictions |
+| Precision |	Correct churn predictions among predicted churn customers |
+| Recall |	Correctly identified churn customers |
+| F1-Score |	Balance between precision and recall |
+| Confusion Matrix |	Shows correct and incorrect predictions |
+
+## 10. Python Implementation  
+**Aim:** To develop a Customer Churn Prediction model using Machine Learning and predict whether a customer will leave a company.  
+
+## Code:  
+<img width="271" height="383" alt="image" src="https://github.com/user-attachments/assets/b97be140-4aff-4c5d-a3e6-4bac881b5735" />  
+
+<img width="214" height="368" alt="image" src="https://github.com/user-attachments/assets/24dde4a0-f603-4674-b079-5f0c6e310448" />  
+
+<img width="197" height="320" alt="image" src="https://github.com/user-attachments/assets/a817593e-7f8e-4909-9fab-c95afe9a7ae9" />  
+
+## Output:  
+<img width="272" height="400" alt="image" src="https://github.com/user-attachments/assets/940d441a-62f4-47ac-852c-0f284043194b" />  
+
+## 11. Advantages of Customer Churn Prediction  
+**1.** Helps businesses retain existing customers.  
+**2.** Reduces customer loss.  
+**3.** Improves customer satisfaction.  
+**4.** Helps identify customers at risk.  
+**5.** Supports better marketing strategies.  
+**6.** Increases business profitability.  
+
+## 12. Real-Life Applications  
+- Telecommunication: Predicting customers who may cancel mobile connections.  
+- Banking: Identifying customers who may close their accounts.  
+- E-commerce: Predicting customers who may stop shopping.  
+- OTT Platforms: Identifying users who may cancel subscriptions.  
+- Insurance: Predicting policyholders who may not renew policies.  
+
+## 14. Conclusion  
+Customer Churn Prediction was successfully implemented using Python and Logistic Regression. The model was trained on customer-related information and evaluated using accuracy, precision, recall, F1-score, and a confusion matrix. It predicts whether a customer is likely to leave or continue using the company's services.  
+
+
 
 
 
